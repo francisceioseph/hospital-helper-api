@@ -2,14 +2,12 @@
 
 one:
   prontuario: one
-  exam_type: one
   scheduled_to: 2019-01-12 13:27:00
   finished: false
   canceled: false
 
 two:
   prontuario: two
-  exam_type: two
   scheduled_to: 2019-01-12 13:27:00
   finished: false
   canceled: false

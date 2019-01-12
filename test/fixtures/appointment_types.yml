@@ -1,7 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  appointment_type_name: MyString
+  id: 1
+  appointment_type_name: Primeira Vez
 
 two:
-  appointment_type_name: MyString
+  id: 2
+  appointment_type_name: Retorno

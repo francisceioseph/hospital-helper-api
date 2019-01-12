@@ -1,19 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  street_name: MyString
-  house_number: MyString
-  zipcode: MyString
-  neighborhood: MyString
-  city: MyString
-  state: MyString
-  profile: 
+  id: 1
+  street_name: Street 01
+  house_number: 1
+  zipcode: 1234567-030
+  neighborhood: Some
+  city: some city
+  state: some state
 
 two:
-  street_name: MyString
-  house_number: MyString
-  zipcode: MyString
-  neighborhood: MyString
-  city: MyString
-  state: MyString
-  profile: 
+  id: 2
+  street_name: Street 02
+  house_number: 2
+  zipcode: 1234567-030
+  neighborhood: Some
+  city: some city
+  state: some state

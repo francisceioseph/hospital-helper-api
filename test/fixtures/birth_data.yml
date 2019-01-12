@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   date_of_birth: 2019-01-12
-  country_of_birth: MyString
-  state_of_birth: MyString
-  city_of_birth: MyString
+  country_of_birth: Brazil
+  state_of_birth: Ceara
+  city_of_birth: Fortaleza
 
 two:
+  id: 2
   date_of_birth: 2019-01-12
-  country_of_birth: MyString
-  state_of_birth: MyString
-  city_of_birth: MyString
+  country_of_birth: Brazil
+  state_of_birth: Ceara
+  city_of_birth: Fortaleza

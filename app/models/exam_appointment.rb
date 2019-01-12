@@ -1,5 +1,5 @@
 class ExamAppointment < ApplicationRecord
-  validate :scheduled_to, presence: true
+  validates :scheduled_to, presence: true
 
   has_one :exam_type
 

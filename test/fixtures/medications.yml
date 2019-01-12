@@ -2,8 +2,6 @@
 
 one:
   medication_name: MyString
-  prescription_item: one
 
 two:
   medication_name: MyString
-  prescription_item: two

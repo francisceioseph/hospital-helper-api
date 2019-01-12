@@ -3,9 +3,7 @@
 one:
   number: MyString
   contact_person: MyString
-  belongs_to: 
 
 two:
   number: MyString
   contact_person: MyString
-  belongs_to: 
