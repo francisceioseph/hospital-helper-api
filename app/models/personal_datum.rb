@@ -11,7 +11,7 @@ class PersonalDatum < ApplicationRecord
   validates :skin_color, presence: true
   validates :gender, presence: true
 
-  has_one :birth_datum, optional: false
+  has_one :birth_datum, required: false
   has_one :immigration_datum
 
   belongs_to :profile

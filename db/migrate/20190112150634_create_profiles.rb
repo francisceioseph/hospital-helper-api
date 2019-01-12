@@ -3,7 +3,7 @@ class CreateProfiles < ActiveRecord::Migration[5.2]
     create_table :profiles do |t|
       t.string :profile_type
 
-      t.belongs_to :user, foreign_key: true
+      t.belongs_to :user
       t.timestamps
     end
   end

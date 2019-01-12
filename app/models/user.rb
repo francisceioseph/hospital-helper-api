@@ -5,5 +5,5 @@ class User < ApplicationRecord
   validates :username, presence: true
   validates :password, presence: true
 
-  has_one :profile, optional: false
+  has_one :profile, required: false
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_12_175921) do
+ActiveRecord::Schema.define(version: 2019_01_12_180914) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "street_name"
@@ -110,6 +110,14 @@ ActiveRecord::Schema.define(version: 2019_01_12_175921) do
     t.index ["personal_datum_id"], name: "index_immigration_data_on_personal_datum_id"
   end
 
+  create_table "medications", force: :cascade do |t|
+    t.string "medication_name"
+    t.integer "prescription_item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["prescription_item_id"], name: "index_medications_on_prescription_item_id"
+  end
+
   create_table "personal_data", force: :cascade do |t|
     t.string "full_name"
     t.string "social_name"
@@ -123,6 +131,27 @@ ActiveRecord::Schema.define(version: 2019_01_12_175921) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["profile_id"], name: "index_personal_data_on_profile_id"
+  end
+
+  create_table "prescription_items", force: :cascade do |t|
+    t.integer "prescription_id"
+    t.integer "amount"
+    t.string "unit"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["prescription_id"], name: "index_prescription_items_on_prescription_id"
+  end
+
+  create_table "prescriptions", force: :cascade do |t|
+    t.integer "appointment_id"
+    t.integer "doctor_id"
+    t.integer "pacient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["appointment_id"], name: "index_prescriptions_on_appointment_id"
+    t.index ["doctor_id"], name: "index_prescriptions_on_doctor_id"
+    t.index ["pacient_id"], name: "index_prescriptions_on_pacient_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -152,6 +181,10 @@ ActiveRecord::Schema.define(version: 2019_01_12_175921) do
     t.integer "prontuario_id"
     t.integer "doctor_id"
     t.integer "pacient_id"
+    t.datetime "scheduled_to"
+    t.datetime "real_end_time"
+    t.boolean "finished"
+    t.boolean "canceled"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["doctor_id"], name: "index_surgery_appointments_on_doctor_id"
