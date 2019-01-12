@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  prescription: one
+  amount: 1
+  unit: MyString
+  description: MyString
+
+two:
+  prescription: two
+  amount: 1
+  unit: MyString
+  description: MyString

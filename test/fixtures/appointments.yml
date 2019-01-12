@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  scheduled_to: 2019-01-12 13:13:21
+  intended_end_time: 2019-01-12 13:13:21
+  real_end_time: 2019-01-12 13:13:21
+  finished: false
+  canceled: false
+  belongs_to: 
+
+two:
+  scheduled_to: 2019-01-12 13:13:21
+  intended_end_time: 2019-01-12 13:13:21
+  real_end_time: 2019-01-12 13:13:21
+  finished: false
+  canceled: false
+  belongs_to: 

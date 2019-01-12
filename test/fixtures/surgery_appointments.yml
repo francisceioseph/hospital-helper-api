@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  prontuario: one
+  doctor: one
+  pacient: one
+  surgery_type: 
+
+two:
+  prontuario: two
+  doctor: two
+  pacient: two
+  surgery_type: 

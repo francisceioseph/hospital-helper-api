@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_of_birth: 2019-01-12
+  country_of_birth: MyString
+  state_of_birth: MyString
+  city_of_birth: MyString
+
+two:
+  date_of_birth: 2019-01-12
+  country_of_birth: MyString
+  state_of_birth: MyString
+  city_of_birth: MyString

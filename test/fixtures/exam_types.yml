@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  exam_name: MyString
+  exam_description: MyString
+  exam_appointments: one
+
+two:
+  exam_name: MyString
+  exam_description: MyString
+  exam_appointments: two

@@ -10,6 +10,177 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2019_01_12_175921) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "street_name"
+    t.string "house_number"
+    t.string "zipcode"
+    t.string "neighborhood"
+    t.string "city"
+    t.string "state"
+    t.integer "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_addresses_on_profile_id"
+  end
+
+  create_table "appointment_types", force: :cascade do |t|
+    t.string "appointment_type_name"
+    t.integer "appointment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["appointment_id"], name: "index_appointment_types_on_appointment_id"
+  end
+
+  create_table "appointments", force: :cascade do |t|
+    t.datetime "scheduled_to"
+    t.datetime "intended_end_time"
+    t.datetime "real_end_time"
+    t.boolean "finished"
+    t.boolean "canceled"
+    t.integer "doctor_id"
+    t.integer "pacient_id"
+    t.integer "prontuario_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
+    t.index ["pacient_id"], name: "index_appointments_on_pacient_id"
+    t.index ["prontuario_id"], name: "index_appointments_on_prontuario_id"
+  end
+
+  create_table "birth_data", force: :cascade do |t|
+    t.date "date_of_birth"
+    t.string "country_of_birth"
+    t.string "state_of_birth"
+    t.string "city_of_birth"
+    t.integer "personal_datum_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["personal_datum_id"], name: "index_birth_data_on_personal_datum_id"
+  end
+
+  create_table "emails", force: :cascade do |t|
+    t.string "address"
+    t.integer "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_emails_on_profile_id"
+  end
+
+  create_table "exam_appointments", force: :cascade do |t|
+    t.datetime "scheduled_to"
+    t.boolean "finished"
+    t.boolean "canceled"
+    t.integer "prontuario_id"
+    t.integer "doctor_id"
+    t.integer "pacient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["doctor_id"], name: "index_exam_appointments_on_doctor_id"
+    t.index ["pacient_id"], name: "index_exam_appointments_on_pacient_id"
+    t.index ["prontuario_id"], name: "index_exam_appointments_on_prontuario_id"
+  end
+
+  create_table "exam_types", force: :cascade do |t|
+    t.string "exam_name"
+    t.string "exam_description"
+    t.integer "exam_appointments_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exam_appointments_id"], name: "index_exam_types_on_exam_appointments_id"
+  end
+
+  create_table "family_data", force: :cascade do |t|
+    t.string "mother_name"
+    t.string "father_name"
+    t.boolean "is_family_head"
+    t.integer "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_family_data_on_profile_id"
+  end
+
+  create_table "immigration_data", force: :cascade do |t|
+    t.date "nationalization_date"
+    t.date "oridinance_date"
+    t.integer "personal_datum_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["personal_datum_id"], name: "index_immigration_data_on_personal_datum_id"
+  end
+
+  create_table "personal_data", force: :cascade do |t|
+    t.string "full_name"
+    t.string "social_name"
+    t.string "rg"
+    t.string "cpf"
+    t.string "nis"
+    t.string "nationality"
+    t.string "skin_color"
+    t.string "gender"
+    t.integer "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_personal_data_on_profile_id"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string "profile_type"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "prontuarios", force: :cascade do |t|
+    t.integer "pacient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pacient_id"], name: "index_prontuarios_on_pacient_id"
+  end
+
+  create_table "speciaties", force: :cascade do |t|
+    t.string "specialty_name"
+    t.integer "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_speciaties_on_profile_id"
+  end
+
+  create_table "surgery_appointments", force: :cascade do |t|
+    t.integer "prontuario_id"
+    t.integer "doctor_id"
+    t.integer "pacient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["doctor_id"], name: "index_surgery_appointments_on_doctor_id"
+    t.index ["pacient_id"], name: "index_surgery_appointments_on_pacient_id"
+    t.index ["prontuario_id"], name: "index_surgery_appointments_on_prontuario_id"
+  end
+
+  create_table "surgery_types", force: :cascade do |t|
+    t.string "surgery_type_name"
+    t.integer "surgery_appointment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["surgery_appointment_id"], name: "index_surgery_types_on_surgery_appointment_id"
+  end
+
+  create_table "telephones", force: :cascade do |t|
+    t.string "number"
+    t.string "contact_person"
+    t.integer "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_telephones_on_profile_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
