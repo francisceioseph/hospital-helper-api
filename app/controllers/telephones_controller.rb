@@ -46,6 +46,6 @@ class TelephonesController < ApplicationController
     end
 
     def telephone_params
-      params.require(:telephone).permit(:number, :profile_id)
+      params.require(:telephone).permit(:number, :contact_person, :profile_id)
     end
 end

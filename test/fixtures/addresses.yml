@@ -2,18 +2,20 @@
 
 one:
   id: 1
-  street_name: Street 01
+  street_name: Rua do Jacarandá
   house_number: 1
   zipcode: 1234567-030
-  neighborhood: Some
-  city: some city
-  state: some state
+  neighborhood: Jaborati
+  city: St. Antonio do Sul
+  state: Estado do Sul
+  profile_id: 3
 
 two:
   id: 2
-  street_name: Street 02
+  street_name: Rua do Ipê
   house_number: 2
   zipcode: 1234567-030
-  neighborhood: Some
-  city: some city
-  state: some state
+  neighborhood: Jaborati
+  city: St. Antonio do Sul
+  state: Estado do Sul
+  profile_id: 4

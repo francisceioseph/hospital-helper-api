@@ -3,7 +3,9 @@
 one:
   id: 1
   address: francisco.souza@mdc.com
+  profile_id: 3
 
 two:
   id: 2
   address: lucas.martines@mdc.com
+  profile_id: 4

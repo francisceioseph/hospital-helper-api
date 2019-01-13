@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  number: MyString
-  contact_person: MyString
+  number: (88) 7878 9898
+  contact_person: Frankie
+  profile_id: 3  
 
 two:
-  number: MyString
-  contact_person: MyString
+  number: (85) 9898 9898
+  contact_person: Stuewie
+  profile_id: 3
