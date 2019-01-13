@@ -18,7 +18,7 @@ class AddressesController < ApplicationController
     @address = Address.new(address_params)
 
     if @address.save
-      render :show, status: :created, location: @address
+      render :show
     else
       render json: @address.errors, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class AddressesController < ApplicationController
   # PATCH/PUT /addresses/1.json
   def update
     if @address.update(address_params)
-      render :show, status: :ok, location: @address
+      render :show
     else
       render json: @address.errors, status: :unprocessable_entity
     end

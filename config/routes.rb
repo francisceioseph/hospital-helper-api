@@ -15,5 +15,11 @@ Rails.application.routes.draw do
   patch '/addresses/:id', to: 'addresses#update'
   delete '/addresses/:id', to: 'addresses#destroy'
 
+  get   '/emails', to: 'emails#index'
+  post  '/emails', to: 'emails#create'
+  get   '/emails/:id', to: 'emails#show'
+  patch '/emails/:id', to: 'emails#update'
+  delete '/emails/:id', to: 'emails#destroy'
+
   # For details on the DSL available withn this file, see http://guides.rubyonrails.org/routing.html
 end
