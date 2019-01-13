@@ -6,6 +6,8 @@
 #
 one: 
   id: 1
+  profile_type: Doctor
 
 two:
   id: 2
+  profile_type: Doctor
