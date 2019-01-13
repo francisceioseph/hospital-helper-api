@@ -1,6 +1,18 @@
 require 'test_helper'
 
 class TelephonesControllerTest < ActionDispatch::IntegrationTest
+  def telephone_url(tel)
+    "#{telephones_url}/#{tel.id}"
+  end
+
+  def telephone
+    Telephone.new(
+      number: '(88) 98888 8888',
+      contact_person: 'Willy',
+      profile_id: 3
+    )
+  end
+
   setup do
     @telephone = telephones(:one)
   end
@@ -12,10 +24,10 @@ class TelephonesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create telephone" do
     assert_difference('Telephone.count') do
-      post telephones_url, params: { telephone: { create: @telephone.create, index: @telephone.index, remove: @telephone.remove, show: @telephone.show, update: @telephone.update } }, as: :json
+      post telephones_url, params: { telephone: telephone }, as: :json
     end
 
-    assert_response 201
+    assert_response 200
   end
 
   test "should show telephone" do
@@ -24,7 +36,8 @@ class TelephonesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update telephone" do
-    patch telephone_url(@telephone), params: { telephone: { create: @telephone.create, index: @telephone.index, remove: @telephone.remove, show: @telephone.show, update: @telephone.update } }, as: :json
+    @telephone.number = '(99) 0000 0000'
+    patch telephone_url(@telephone), params: { telephone: @telephone }, as: :json
     assert_response 200
   end
 

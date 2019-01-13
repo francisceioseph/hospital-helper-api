@@ -1,7 +1,20 @@
 require 'test_helper'
 
 class AddressesControllerTest < ActionDispatch::IntegrationTest
+  def address_url(address)
+    "#{addresses_url}/#{address.id}"
+  end
+
   setup do
+    @new_address = Address.new(
+      :profile_id => '3',
+      :street_name => 'Rua da Pata de Vaca',
+      :house_number => 23,
+      :zipcode => '19121912-789',
+      :neighborhood => 'Botao Mimoso',
+      :city => 'Orquilandia',
+      :state => 'Estado do Sul')
+    
     @address = addresses(:one)
   end
 
@@ -12,10 +25,10 @@ class AddressesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create address" do
     assert_difference('Address.count') do
-      post addresses_url, params: { address: { create: @address.create, index: @address.index, remove: @address.remove, show: @address.show, update: @address.update } }, as: :json
+      post addresses_url, params: { address: @new_address.attributes }, as: :json
     end
 
-    assert_response 201
+    assert_response 200
   end
 
   test "should show address" do
@@ -24,7 +37,7 @@ class AddressesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update address" do
-    patch address_url(@address), params: { address: { create: @address.create, index: @address.index, remove: @address.remove, show: @address.show, update: @address.update } }, as: :json
+    patch address_url(@address), params: { address: { street_name: 'Rua das Flores', house_number: 34 } }, as: :json
     assert_response 200
   end
 

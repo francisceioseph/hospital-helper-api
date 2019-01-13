@@ -1,6 +1,17 @@
 require 'test_helper'
 
 class EmailsControllerTest < ActionDispatch::IntegrationTest
+  def email_url(email)
+    "#{emails_url}/#{email.id}"
+  end
+
+  def email
+    Email.new(
+      profile_id: 3,
+      address: 'boo@mdc.com',
+    )
+  end
+
   setup do
     @email = emails(:one)
   end
@@ -12,10 +23,10 @@ class EmailsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create email" do
     assert_difference('Email.count') do
-      post emails_url, params: { email: { create: @email.create, index: @email.index, remove: @email.remove, show: @email.show, update: @email.update } }, as: :json
+      post emails_url, params: { email: email.attributes }, as: :json
     end
 
-    assert_response 201
+    assert_response 200
   end
 
   test "should show email" do
@@ -24,13 +35,13 @@ class EmailsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update email" do
-    patch emails_url(@email), params: { email: { create: @email.create, index: @email.index, remove: @email.remove, show: @email.show, update: @email.update } }, as: :json
+    patch email_url(@email), params: { email: @email.attributes }, as: :json
     assert_response 200
   end
 
   test "should destroy email" do
     assert_difference('Email.count', -1) do
-      delete emails_url(@email), as: :json
+      delete email_url(@email), as: :json
     end
 
     assert_response 204

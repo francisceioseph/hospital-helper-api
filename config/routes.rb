@@ -20,6 +20,12 @@ Rails.application.routes.draw do
   get   '/emails/:id', to: 'emails#show'
   patch '/emails/:id', to: 'emails#update'
   delete '/emails/:id', to: 'emails#destroy'
+  
+  get   '/telephones', to: 'telephones#index'
+  post  '/telephones', to: 'telephones#create'
+  get   '/telephones/:id', to: 'telephones#show'
+  patch '/telephones/:id', to: 'telephones#update'
+  delete '/telephones/:id', to: 'telephones#destroy'
 
   # For details on the DSL available withn this file, see http://guides.rubyonrails.org/routing.html
 end
