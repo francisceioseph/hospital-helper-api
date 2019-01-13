@@ -6,5 +6,5 @@ class Address < ApplicationRecord
   validates :city, presence: true
   validates :state, presence: true
 
-  belongs_to :profile
+  belongs_to :profile, required: true
 end
