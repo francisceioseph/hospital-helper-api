@@ -10,6 +10,7 @@ Rails.application.routes.draw do
                 sessions: 'sessions',
                 registrations: 'registrations'
               }
+  
   get   '/doctors', to: 'doctors#index'
   post  '/doctors', to: 'doctors#create'
   get   '/doctors/:id', to: 'doctors#show'

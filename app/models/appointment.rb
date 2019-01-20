@@ -7,6 +7,6 @@ class Appointment < ApplicationRecord
   has_one :appointment_type
 
   belongs_to :doctor
-  belongs_to :pacient
+  belongs_to :pacient, inverse_of: :appointment
   belongs_to :prontuario
 end
