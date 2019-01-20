@@ -7,7 +7,7 @@ class Profile < ApplicationRecord
   has_many :telephones
   has_many :emails
 
-  belongs_to :user, required: false
+  #belongs_to :user, required: false
 
   self.inheritance_column = :profile_type
 
