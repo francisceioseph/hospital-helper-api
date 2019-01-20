@@ -4,6 +4,7 @@ class PacientControllerTest < ActionDispatch::IntegrationTest
   setup do
     @headers = { 'HTTP_ACCEPT': 'application/json' }
   end
+
   test 'can list all pacients' do
     get pacients_url, headers: @headers
     assert_response :success
@@ -16,11 +17,8 @@ class PacientControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'can create a pacient' do
-    post pacients_url, headers: @headers, params: {
-      pacient: {
-        profile_type: 'Pacient'
-      }
-    }
+    philip = pacients(:philip)
+    post pacients_url, headers: @headers, params: { pacient: philip }
     assert_response :success
   end
 

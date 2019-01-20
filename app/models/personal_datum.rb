@@ -3,7 +3,6 @@
 # the personal datum model
 class PersonalDatum < ApplicationRecord
   validates :full_name, presence: true
-  validates :social_name, presence: true
   validates :rg, presence: true
   validates :cpf, presence: true
   validates :nis, presence: true
