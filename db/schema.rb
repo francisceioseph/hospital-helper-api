@@ -10,38 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_20_173715) do
+ActiveRecord::Schema.define(version: 2019_01_12_180914) do
 
-  create_table "addresses", force: :cascade do |t|
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "street_name"
     t.string "house_number"
     t.string "zipcode"
     t.string "neighborhood"
     t.string "city"
     t.string "state"
-    t.integer "profile_id"
+    t.bigint "profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["profile_id"], name: "index_addresses_on_profile_id"
   end
 
-  create_table "appointment_types", force: :cascade do |t|
+  create_table "appointment_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "appointment_type_name"
-    t.integer "appointment_id"
+    t.bigint "appointment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["appointment_id"], name: "index_appointment_types_on_appointment_id"
   end
 
-  create_table "appointments", force: :cascade do |t|
-    t.datetime "scheduled_to"
-    t.datetime "intended_end_time"
-    t.datetime "real_end_time"
+  create_table "appointments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.timestamp "scheduled_to"
+    t.timestamp "intended_end_time"
+    t.timestamp "real_end_time"
     t.boolean "finished"
     t.boolean "canceled"
-    t.integer "doctor_id"
-    t.integer "pacient_id"
-    t.integer "prontuario_id"
+    t.bigint "doctor_id"
+    t.bigint "pacient_id"
+    t.bigint "prontuario_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
@@ -49,32 +49,32 @@ ActiveRecord::Schema.define(version: 2019_01_20_173715) do
     t.index ["prontuario_id"], name: "index_appointments_on_prontuario_id"
   end
 
-  create_table "birth_data", force: :cascade do |t|
+  create_table "birth_data", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "date_of_birth"
     t.string "country_of_birth"
     t.string "state_of_birth"
     t.string "city_of_birth"
-    t.integer "personal_datum_id"
+    t.bigint "personal_datum_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["personal_datum_id"], name: "index_birth_data_on_personal_datum_id"
   end
 
-  create_table "emails", force: :cascade do |t|
+  create_table "emails", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "address"
-    t.integer "profile_id"
+    t.bigint "profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["profile_id"], name: "index_emails_on_profile_id"
   end
 
-  create_table "exam_appointments", force: :cascade do |t|
-    t.datetime "scheduled_to"
+  create_table "exam_appointments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.timestamp "scheduled_to"
     t.boolean "finished"
     t.boolean "canceled"
-    t.integer "prontuario_id"
-    t.integer "doctor_id"
-    t.integer "pacient_id"
+    t.bigint "prontuario_id"
+    t.bigint "doctor_id"
+    t.bigint "pacient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["doctor_id"], name: "index_exam_appointments_on_doctor_id"
@@ -82,48 +82,48 @@ ActiveRecord::Schema.define(version: 2019_01_20_173715) do
     t.index ["prontuario_id"], name: "index_exam_appointments_on_prontuario_id"
   end
 
-  create_table "exam_types", force: :cascade do |t|
+  create_table "exam_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "exam_name"
     t.string "exam_description"
-    t.integer "exam_appointments_id"
+    t.bigint "exam_appointments_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["exam_appointments_id"], name: "index_exam_types_on_exam_appointments_id"
   end
 
-  create_table "family_data", force: :cascade do |t|
+  create_table "family_data", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "mother_name"
     t.string "father_name"
     t.boolean "is_family_head"
-    t.integer "profile_id"
+    t.bigint "profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["profile_id"], name: "index_family_data_on_profile_id"
   end
 
-  create_table "immigration_data", force: :cascade do |t|
+  create_table "immigration_data", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "nationalization_date"
     t.date "oridinance_date"
-    t.integer "personal_datum_id"
+    t.bigint "personal_datum_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["personal_datum_id"], name: "index_immigration_data_on_personal_datum_id"
   end
 
-  create_table "jwt_blacklist", force: :cascade do |t|
+  create_table "jwt_blacklist", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "jti", null: false
     t.index ["jti"], name: "index_jwt_blacklist_on_jti"
   end
 
-  create_table "medications", force: :cascade do |t|
+  create_table "medications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "medication_name"
-    t.integer "prescription_item_id"
+    t.bigint "prescription_item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["prescription_item_id"], name: "index_medications_on_prescription_item_id"
   end
 
-  create_table "personal_data", force: :cascade do |t|
+  create_table "personal_data", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "full_name"
     t.string "social_name"
     t.string "rg"
@@ -132,14 +132,14 @@ ActiveRecord::Schema.define(version: 2019_01_20_173715) do
     t.string "nationality"
     t.string "skin_color"
     t.string "gender"
-    t.integer "profile_id"
+    t.bigint "profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["profile_id"], name: "index_personal_data_on_profile_id"
   end
 
-  create_table "prescription_items", force: :cascade do |t|
-    t.integer "prescription_id"
+  create_table "prescription_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "prescription_id"
     t.integer "amount"
     t.string "unit"
     t.string "description"
@@ -148,10 +148,10 @@ ActiveRecord::Schema.define(version: 2019_01_20_173715) do
     t.index ["prescription_id"], name: "index_prescription_items_on_prescription_id"
   end
 
-  create_table "prescriptions", force: :cascade do |t|
-    t.integer "appointment_id"
-    t.integer "doctor_id"
-    t.integer "pacient_id"
+  create_table "prescriptions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "appointment_id"
+    t.bigint "doctor_id"
+    t.bigint "pacient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["appointment_id"], name: "index_prescriptions_on_appointment_id"
@@ -159,35 +159,35 @@ ActiveRecord::Schema.define(version: 2019_01_20_173715) do
     t.index ["pacient_id"], name: "index_prescriptions_on_pacient_id"
   end
 
-  create_table "profiles", force: :cascade do |t|
+  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "profile_type"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
-  create_table "prontuarios", force: :cascade do |t|
-    t.integer "pacient_id"
+  create_table "prontuarios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "pacient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["pacient_id"], name: "index_prontuarios_on_pacient_id"
   end
 
-  create_table "speciaties", force: :cascade do |t|
+  create_table "speciaties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "specialty_name"
-    t.integer "profile_id"
+    t.bigint "profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["profile_id"], name: "index_speciaties_on_profile_id"
   end
 
-  create_table "surgery_appointments", force: :cascade do |t|
-    t.integer "prontuario_id"
-    t.integer "doctor_id"
-    t.integer "pacient_id"
-    t.datetime "scheduled_to"
-    t.datetime "real_end_time"
+  create_table "surgery_appointments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "prontuario_id"
+    t.bigint "doctor_id"
+    t.bigint "pacient_id"
+    t.timestamp "scheduled_to"
+    t.timestamp "real_end_time"
     t.boolean "finished"
     t.boolean "canceled"
     t.datetime "created_at", null: false
@@ -197,24 +197,24 @@ ActiveRecord::Schema.define(version: 2019_01_20_173715) do
     t.index ["prontuario_id"], name: "index_surgery_appointments_on_prontuario_id"
   end
 
-  create_table "surgery_types", force: :cascade do |t|
+  create_table "surgery_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "surgery_type_name"
-    t.integer "surgery_appointment_id"
+    t.bigint "surgery_appointment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["surgery_appointment_id"], name: "index_surgery_types_on_surgery_appointment_id"
   end
 
-  create_table "telephones", force: :cascade do |t|
+  create_table "telephones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "number"
     t.string "contact_person"
-    t.integer "profile_id"
+    t.bigint "profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["profile_id"], name: "index_telephones_on_profile_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -226,4 +226,17 @@ ActiveRecord::Schema.define(version: 2019_01_20_173715) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "addresses", "profiles"
+  add_foreign_key "appointment_types", "appointments"
+  add_foreign_key "birth_data", "personal_data"
+  add_foreign_key "emails", "profiles"
+  add_foreign_key "exam_types", "exam_appointments", column: "exam_appointments_id"
+  add_foreign_key "family_data", "profiles"
+  add_foreign_key "immigration_data", "personal_data"
+  add_foreign_key "medications", "prescription_items"
+  add_foreign_key "personal_data", "profiles"
+  add_foreign_key "prescription_items", "prescriptions"
+  add_foreign_key "speciaties", "profiles"
+  add_foreign_key "surgery_types", "surgery_appointments"
+  add_foreign_key "telephones", "profiles"
 end
