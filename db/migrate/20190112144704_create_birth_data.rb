@@ -6,7 +6,7 @@ class CreateBirthData < ActiveRecord::Migration[5.2]
       t.string :state_of_birth
       t.string :city_of_birth
 
-      t.belongs_to :personal_datum, foreign_key: true
+      t.belongs_to :personal_datum
 
       t.timestamps
     end

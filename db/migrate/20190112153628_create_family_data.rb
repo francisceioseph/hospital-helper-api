@@ -5,7 +5,7 @@ class CreateFamilyData < ActiveRecord::Migration[5.2]
       t.string :father_name
       t.boolean :is_family_head
 
-      t.belongs_to :profile, foreign_key: true
+      t.belongs_to :profile
 
       t.timestamps
     end

@@ -39,5 +39,33 @@ Rails.application.routes.draw do
   patch '/telephones/:id', to: 'telephones#update'
   delete '/telephones/:id', to: 'telephones#destroy'
 
-  # For details on the DSL available withn this file, see http://guides.rubyonrails.org/routing.html
+  get   '/exams', to: 'exams#index'
+  post  '/exams', to: 'exams#create'
+  get   '/exams/:id', to: 'exams#show'
+  patch '/exams/:id', to: 'exams#update'
+
+  get   '/exam-types', to: 'exam_types#index'
+  post  '/exam-types', to: 'exam_types#create'
+  get   '/exam-types/:id', to: 'exam_types#show'
+  patch '/exam-types/:id', to: 'exam_types#update'
+
+  get   '/appointments', to: 'appointments#index'
+  post  '/appointments', to: 'appointments#create'
+  get   '/appointments/:id', to: 'appointments#show'
+  patch '/appointments/:id', to: 'appointments#update'
+
+  get   '/appointment-types', to: 'appointment_types#index'
+  post  '/appointment-types', to: 'appointment_types#create'
+  get   '/appointment-types/:id', to: 'appointment_types#show'
+  patch '/appointment-types/:id', to: 'appointment_types#update'
+
+  get   '/surgeries', to: 'surgeries#index'
+  post  '/surgeries', to: 'surgeries#create'
+  get   '/surgeries/:id', to: 'surgeries#show'
+  patch '/surgeries/:id', to: 'surgeries#update'
+
+  get   '/surgery-types', to: 'surgery_types#index'
+  post  '/surgery-types', to: 'surgery_types#create'
+  get   '/surgery-types/:id', to: 'surgery_types#show'
+  patch '/surgery-types/:id', to: 'surgery_types#update'
 end

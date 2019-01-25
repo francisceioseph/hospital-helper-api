@@ -4,7 +4,7 @@ class CreateImmigrationData < ActiveRecord::Migration[5.2]
       t.date :nationalization_date
       t.date :oridinance_date
 
-      t.belongs_to :personal_datum, foreign_key: true
+      t.belongs_to :personal_datum
 
       t.timestamps
     end

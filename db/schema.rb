@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2019_01_12_180914) do
 
   create_table "appointment_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "appointment_type_name"
+    t.string "appointment_type_description"
     t.bigint "appointment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -83,8 +84,8 @@ ActiveRecord::Schema.define(version: 2019_01_12_180914) do
   end
 
   create_table "exam_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "exam_name"
-    t.string "exam_description"
+    t.string "exam_type_name"
+    t.string "exam_type_description"
     t.bigint "exam_appointments_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -199,6 +200,7 @@ ActiveRecord::Schema.define(version: 2019_01_12_180914) do
 
   create_table "surgery_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "surgery_type_name"
+    t.string "surgery_type_description"
     t.bigint "surgery_appointment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -226,17 +228,4 @@ ActiveRecord::Schema.define(version: 2019_01_12_180914) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "addresses", "profiles"
-  add_foreign_key "appointment_types", "appointments"
-  add_foreign_key "birth_data", "personal_data"
-  add_foreign_key "emails", "profiles"
-  add_foreign_key "exam_types", "exam_appointments", column: "exam_appointments_id"
-  add_foreign_key "family_data", "profiles"
-  add_foreign_key "immigration_data", "personal_data"
-  add_foreign_key "medications", "prescription_items"
-  add_foreign_key "personal_data", "profiles"
-  add_foreign_key "prescription_items", "prescriptions"
-  add_foreign_key "speciaties", "profiles"
-  add_foreign_key "surgery_types", "surgery_appointments"
-  add_foreign_key "telephones", "profiles"
 end

@@ -1,3 +1,4 @@
 class ExamType < ApplicationRecord
-  belongs_to :exam_appointment
+  validates :exam_type_name, presence: true
+  belongs_to :exam_appointment, required: false
 end

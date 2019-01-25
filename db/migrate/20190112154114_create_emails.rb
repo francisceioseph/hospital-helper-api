@@ -3,7 +3,7 @@ class CreateEmails < ActiveRecord::Migration[5.2]
     create_table :emails do |t|
       t.string :address
 
-      t.belongs_to :profile, foreign_key: true
+      t.belongs_to :profile
       t.timestamps
     end
   end

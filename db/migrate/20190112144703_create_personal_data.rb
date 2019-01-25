@@ -10,7 +10,7 @@ class CreatePersonalData < ActiveRecord::Migration[5.2]
       t.string :skin_color
       t.string :gender
 
-      t.belongs_to :profile, foreign_key: true
+      t.belongs_to :profile
 
       t.timestamps
     end

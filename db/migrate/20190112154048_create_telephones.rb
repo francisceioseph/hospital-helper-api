@@ -3,7 +3,7 @@ class CreateTelephones < ActiveRecord::Migration[5.2]
     create_table :telephones do |t|
       t.string :number
       t.string :contact_person
-      t.belongs_to :profile, foreign_key: true
+      t.belongs_to :profile
 
       t.timestamps
     end
