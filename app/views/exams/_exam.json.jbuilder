@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.scheduled_to exam.scheduled_to
 json.finished     exam.finished
 json.canceled     exam.canceled

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.id           address.id
 json.street_name  address.street_name
 json.house_number address.house_number

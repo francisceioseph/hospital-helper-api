@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PacientsController < ApplicationController
   def index
     @pacients = Pacient.all
@@ -22,30 +24,30 @@ class PacientsController < ApplicationController
 
   def pacient_id
     params.require(:id)
-  end 
+  end
 
   def pacient_params
     params.require(:pacient).permit(
-      personal_datum_attributes: [
-        :id, :full_name, :social_name, :rg,
-        :cpf, :nis, :nationality,
-        :skin_color,:gender,
+      personal_datum_attributes: %i[
+        id full_name social_name rg
+        cpf nis nationality
+        skin_color gender
       ],
-      family_datum_attributes: [
-        :id, :mother_name,
-        :father_name,
-        :is_family_head,
+      family_datum_attributes: %i[
+        id mother_name
+        father_name
+        is_family_head
       ],
-      addresses_attributes: [
-        :id, :street_name, :house_number, :zipcode,
-        :neighborhood, :city, :state,
+      addresses_attributes: %i[
+        id street_name house_number zipcode
+        neighborhood city state
       ],
-      telephones_attributes: [
-        :id, :number
+      telephones_attributes: %i[
+        id number
       ],
-      emails_attributes: [
-        :id, :address
-      ],
-    );
+      emails_attributes: %i[
+        id address
+      ]
+    )
   end
 end

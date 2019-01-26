@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class TelephonesControllerTest < ActionDispatch::IntegrationTest
@@ -17,12 +19,12 @@ class TelephonesControllerTest < ActionDispatch::IntegrationTest
     @telephone = telephones(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get telephones_url, as: :json
     assert_response :success
   end
 
-  test "should create telephone" do
+  test 'should create telephone' do
     assert_difference('Telephone.count') do
       post telephones_url, params: { telephone: telephone }, as: :json
     end
@@ -30,18 +32,18 @@ class TelephonesControllerTest < ActionDispatch::IntegrationTest
     assert_response 200
   end
 
-  test "should show telephone" do
+  test 'should show telephone' do
     get telephone_url(@telephone), as: :json
     assert_response :success
   end
 
-  test "should update telephone" do
+  test 'should update telephone' do
     @telephone.number = '(99) 0000 0000'
     patch telephone_url(@telephone), params: { telephone: @telephone }, as: :json
     assert_response 200
   end
 
-  test "should destroy telephone" do
+  test 'should destroy telephone' do
     assert_difference('Telephone.count', -1) do
       delete telephone_url(@telephone), as: :json
     end

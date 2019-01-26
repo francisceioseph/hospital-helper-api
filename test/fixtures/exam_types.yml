@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  exam_name: MyString
-  exam_description: MyString
+  exam_type_name: TGO
+  exam_type_description: 
 
 two:
-  exam_name: MyString
-  exam_description: MyString
+  exam_type_name: TGP
+  exam_type_description: 

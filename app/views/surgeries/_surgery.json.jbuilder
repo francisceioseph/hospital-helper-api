@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.prontuario    surgery.prontuario_id
 json.doctor        surgery.doctor_id
 json.pacient       surgery.pacient_id

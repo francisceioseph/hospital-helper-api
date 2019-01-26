@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 class ExamTypesController < ApplicationController
-  before_action :set_exam_type, only: [:show, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :set_exam_type, only: %i[show update destroy]
 
   # GET /exam_types
   # GET /exam_types.json
@@ -9,8 +12,7 @@ class ExamTypesController < ApplicationController
 
   # GET /exam_types/1
   # GET /exam_types/1.json
-  def show
-  end
+  def show; end
 
   # POST /exam_types
   # POST /exam_types.json
@@ -41,13 +43,14 @@ class ExamTypesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_exam_type
-      @exam_type = ExamType.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def exam_type_params
-      params.require(:exam_type).permit(:exam_type_name, :exam_type_description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_exam_type
+    @exam_type = ExamType.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def exam_type_params
+    params.require(:exam_type).permit(:exam_type_name, :exam_type_description)
+  end
 end

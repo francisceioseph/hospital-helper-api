@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SurgeryAppointment < ApplicationRecord
   validates :scheduled_to, presence: true
 

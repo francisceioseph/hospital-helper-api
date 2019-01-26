@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class TelephonesController < ApplicationController
-  before_action :set_telephone, only: [:show, :update, :destroy]
+  before_action :set_telephone, only: %i[show update destroy]
 
   # GET /telephones
   # GET /telephones.json
@@ -9,8 +11,7 @@ class TelephonesController < ApplicationController
 
   # GET /telephones/1
   # GET /telephones/1.json
-  def show
-  end
+  def show; end
 
   # POST /telephones
   # POST /telephones.json
@@ -41,11 +42,12 @@ class TelephonesController < ApplicationController
   end
 
   private
-    def set_telephone
-      @telephone = Telephone.find(params[:id])
-    end
 
-    def telephone_params
-      params.require(:telephone).permit(:number, :contact_person, :profile_id)
-    end
+  def set_telephone
+    @telephone = Telephone.find(params[:id])
+  end
+
+  def telephone_params
+    params.require(:telephone).permit(:number, :contact_person, :profile_id)
+  end
 end

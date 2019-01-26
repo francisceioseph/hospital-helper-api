@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class EmailsController < ApplicationController
-  before_action :set_email, only: [:show, :update, :destroy]
+  before_action :set_email, only: %i[show update destroy]
 
   # GET /emails
   # GET /emails.json
@@ -9,8 +11,7 @@ class EmailsController < ApplicationController
 
   # GET /emails/1
   # GET /emails/1.json
-  def show
-  end
+  def show; end
 
   # POST /emails
   # POST /emails.json
@@ -41,11 +42,12 @@ class EmailsController < ApplicationController
   end
 
   private
-    def set_email
-      @email = Email.find(params[:id])
-    end
 
-    def email_params
-      params.require(:email).permit(:address, :profile_id)
-    end
+  def set_email
+    @email = Email.find(params[:id])
+  end
+
+  def email_params
+    params.require(:email).permit(:address, :profile_id)
+  end
 end

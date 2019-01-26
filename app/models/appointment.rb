@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Appointment < ApplicationRecord
   validates :scheduled_to, presence: true
   validates :intended_end_time, presence: true

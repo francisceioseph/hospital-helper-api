@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DoctorsController < ApplicationController
   def index
     @doctors = Doctor.all
@@ -17,7 +19,7 @@ class DoctorsController < ApplicationController
     @doctor.update_attributes attr_params
   end
 
-  protected 
+  protected
 
   def attr_params
     params.require(:doctor).permit(:profile_type)

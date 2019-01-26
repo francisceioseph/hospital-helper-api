@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Profile < ApplicationRecord
   validates :profile_type, presence: true
 

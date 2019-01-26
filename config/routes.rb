@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   devise_for :users,
-              path: '',
-              path_names: {
-                sign_in: 'login',
-                sign_out: 'logout',
-                registration: 'signup'
-              },
-              controllers: {
-                sessions: 'users/sessions',
-                registrations: 'users/registrations'
-              }
-  
+             path: '',
+             path_names: {
+               sign_in: 'login',
+               sign_out: 'logout',
+               registration: 'signup'
+             },
+             controllers: {
+               sessions: 'users/sessions',
+               registrations: 'users/registrations'
+             }
+
   get   '/doctors', to: 'doctors#index'
   post  '/doctors', to: 'doctors#create'
   get   '/doctors/:id', to: 'doctors#show'
@@ -32,7 +34,7 @@ Rails.application.routes.draw do
   get   '/emails/:id', to: 'emails#show'
   patch '/emails/:id', to: 'emails#update'
   delete '/emails/:id', to: 'emails#destroy'
-  
+
   get   '/telephones', to: 'telephones#index'
   post  '/telephones', to: 'telephones#create'
   get   '/telephones/:id', to: 'telephones#show'

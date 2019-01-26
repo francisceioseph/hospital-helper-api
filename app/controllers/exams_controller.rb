@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ExamsController < ApplicationController
-  before_action :set_exam, only: [:show, :update, :destroy]
+  before_action :set_exam, only: %i[show update destroy]
 
   # GET /exams
   # GET /exams.json
@@ -9,8 +11,7 @@ class ExamsController < ApplicationController
 
   # GET /exams/1
   # GET /exams/1.json
-  def show
-  end
+  def show; end
 
   # POST /exams
   # POST /exams.json
@@ -41,20 +42,21 @@ class ExamsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_exam
-      @exam = ExamAppointment.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def exam_params
-      params.require(:exam).permit(
-        :scheduled_to,
-        :finished,
-        :canceled,
-        :prontuario,
-        :doctor,
-        :pacient,
-      )
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_exam
+    @exam = ExamAppointment.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def exam_params
+    params.require(:exam).permit(
+      :scheduled_to,
+      :finished,
+      :canceled,
+      :prontuario,
+      :doctor,
+      :pacient
+    )
+  end
 end

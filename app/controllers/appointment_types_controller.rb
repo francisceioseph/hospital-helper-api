@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class AppointmentTypesController < ApplicationController
-  before_action :set_appointment_type, only: [:show, :update, :destroy]
+  before_action :set_appointment_type, only: %i[show update destroy]
 
   # GET /appointment_types
   # GET /appointment_types.json
@@ -9,8 +11,7 @@ class AppointmentTypesController < ApplicationController
 
   # GET /appointment_types/1
   # GET /appointment_types/1.json
-  def show
-  end
+  def show; end
 
   # POST /appointment_types
   # POST /appointment_types.json
@@ -41,13 +42,14 @@ class AppointmentTypesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_appointment_type
-      @appointment_type = AppointmentType.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def appointment_type_params
-      params.require(:appointment_type).permit(:appointment_type_name, :appointment_type_description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_appointment_type
+    @appointment_type = AppointmentType.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def appointment_type_params
+    params.require(:appointment_type).permit(:appointment_type_name, :appointment_type_description)
+  end
 end

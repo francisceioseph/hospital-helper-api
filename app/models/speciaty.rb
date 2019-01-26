@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Speciaty < ApplicationRecord
   validates :specialty_name, presence: true
 

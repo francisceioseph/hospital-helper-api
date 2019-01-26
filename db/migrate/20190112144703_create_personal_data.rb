@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreatePersonalData < ActiveRecord::Migration[5.2]
   def change
     create_table :personal_data do |t|

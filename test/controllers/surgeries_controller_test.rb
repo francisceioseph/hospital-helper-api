@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class SurgeriesControllerTest < ActionDispatch::IntegrationTest
@@ -5,12 +7,12 @@ class SurgeriesControllerTest < ActionDispatch::IntegrationTest
     @surgery = surgeries(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get surgeries_url, as: :json
     assert_response :success
   end
 
-  test "should create surgery" do
+  test 'should create surgery' do
     assert_difference('Surgery.count') do
       post surgeries_url, params: { surgery: { create: @surgery.create, index: @surgery.index, show: @surgery.show, update: @surgery.update } }, as: :json
     end
@@ -18,17 +20,17 @@ class SurgeriesControllerTest < ActionDispatch::IntegrationTest
     assert_response 201
   end
 
-  test "should show surgery" do
+  test 'should show surgery' do
     get surgery_url(@surgery), as: :json
     assert_response :success
   end
 
-  test "should update surgery" do
+  test 'should update surgery' do
     patch surgery_url(@surgery), params: { surgery: { create: @surgery.create, index: @surgery.index, show: @surgery.show, update: @surgery.update } }, as: :json
     assert_response 200
   end
 
-  test "should destroy surgery" do
+  test 'should destroy surgery' do
     assert_difference('Surgery.count', -1) do
       delete surgery_url(@surgery), as: :json
     end

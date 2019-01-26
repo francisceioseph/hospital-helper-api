@@ -1,38 +1,42 @@
+# frozen_string_literal: true
+
 require 'test_helper'
+require 'devise/jwt/test_helpers'
 
 class ExamTypesControllerTest < ActionDispatch::IntegrationTest
-  setup do
-    @exam_type = exam_types(:one)
+  def exam_type_url(exam_type)
+    "#{exam_types_url}/#{exam_type.id}"
   end
 
-  test "should get index" do
-    get exam_types_url, as: :json
+  setup do
+    user = users(:one)
+    headers = { 'Accept' => 'application/json', 'Content-Type' => 'application/json' }
+    @auth_headers = Devise::JWT::TestHelpers.auth_headers(headers, user)
+
+    @exam_type = exam_types(:one)
+    @exam_types_params = FactoryBot.create(:exam_type)
+  end
+
+  test 'should get index' do
+    get exam_types_url, headers: @auth_headers, as: :json
     assert_response :success
   end
 
-  test "should create exam_type" do
+  test 'should create exam_type' do
     assert_difference('ExamType.count') do
-      post exam_types_url, params: { exam_type: { create: @exam_type.create, index: @exam_type.index, show: @exam_type.show, update: @exam_type.update } }, as: :json
+      post exam_types_url, headers: @auth_headers, params: @exam_types_params, as: :json
     end
 
     assert_response 201
   end
 
-  test "should show exam_type" do
-    get exam_type_url(@exam_type), as: :json
+  test 'should show exam_type' do
+    get exam_type_url(@exam_type), headers: @auth_headers, as: :json
     assert_response :success
   end
 
-  test "should update exam_type" do
-    patch exam_type_url(@exam_type), params: { exam_type: { create: @exam_type.create, index: @exam_type.index, show: @exam_type.show, update: @exam_type.update } }, as: :json
+  test 'should update exam_type' do
+    patch exam_type_url(@exam_type), headers: @auth_headers, params: @exam_types_params, as: :json
     assert_response 200
-  end
-
-  test "should destroy exam_type" do
-    assert_difference('ExamType.count', -1) do
-      delete exam_type_url(@exam_type), as: :json
-    end
-
-    assert_response 204
   end
 end

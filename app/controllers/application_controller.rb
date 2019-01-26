@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::API
   def render_resource(resource)
     if resource.errors.empty?
@@ -19,7 +21,7 @@ class ApplicationController < ActionController::API
       ]
     }, status: :bad_request
   end
-  
+
   def id_params
     params.require(:id)
   end

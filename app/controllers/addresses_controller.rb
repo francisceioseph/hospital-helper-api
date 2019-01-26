@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class AddressesController < ApplicationController
-  before_action :set_address, only: [:show, :update, :destroy]
+  before_action :set_address, only: %i[show update destroy]
 
   # GET /addresses
   # GET /addresses.json
@@ -9,8 +11,7 @@ class AddressesController < ApplicationController
 
   # GET /addresses/1
   # GET /addresses/1.json
-  def show
-  end
+  def show; end
 
   # POST /addresses
   # POST /addresses.json
@@ -41,19 +42,20 @@ class AddressesController < ApplicationController
   end
 
   private
-    def set_address
-      @address = Address.find(params[:id])
-    end
 
-    def address_params
-      params.require(:address).permit(
-        :profile_id,
-        :street_name,
-        :house_number,
-        :zipcode,
-        :neighborhood,
-        :city,
-        :state
-      )
-    end
+  def set_address
+    @address = Address.find(params[:id])
+  end
+
+  def address_params
+    params.require(:address).permit(
+      :profile_id,
+      :street_name,
+      :house_number,
+      :zipcode,
+      :neighborhood,
+      :city,
+      :state
+    )
+  end
 end
