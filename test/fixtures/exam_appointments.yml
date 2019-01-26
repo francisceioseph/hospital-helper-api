@@ -2,12 +2,8 @@
 
 one:
   prontuario: one
-  scheduled_to: 2019-01-12 13:27:00
-  finished: false
-  canceled: false
-
-two:
-  prontuario: two
+  pacient: one
+  doctor: one
   scheduled_to: 2019-01-12 13:27:00
   finished: false
   canceled: false

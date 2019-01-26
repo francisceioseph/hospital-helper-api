@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ExamsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_exam, only: %i[show update destroy]
 
   # GET /exams
@@ -54,9 +55,9 @@ class ExamsController < ApplicationController
       :scheduled_to,
       :finished,
       :canceled,
-      :prontuario,
-      :doctor,
-      :pacient
+      :prontuario_id,
+      :doctor_id,
+      :pacient_id
     )
   end
 end
