@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  surgery_type_name: MyString
-  surgery_appointment: one
+  surgery_type_name: Apendicectomia
+  surgery_type_description: Retirada cirúrgica do apêndice vermiforme.
 
 two:
-  surgery_type_name: MyString
-  surgery_appointment: two
+  surgery_type_name: Cistectomia
+  surgery_type_description: Retirada cirúrgica do apêndice vermiforme.
