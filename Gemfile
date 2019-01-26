@@ -42,6 +42,8 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'ruby-debug-ide'
+  gem 'minitest-reporters'
+  gem 'win32console' if Gem.win_platform?
 end
 
 group :development do
