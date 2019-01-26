@@ -1,3 +1,1 @@
-# frozen_string_literal: true
-
-json.partial! partial: 'pacients/pacient', locals: { pacient: @pacient }
+json.partial! "pacients/pacient", pacient: @pacient
