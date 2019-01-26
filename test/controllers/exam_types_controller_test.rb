@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'test_helper'
-require 'devise/jwt/test_helpers'
 
 class ExamTypesControllerTest < ActionDispatch::IntegrationTest
   def exam_type_url(exam_type)
@@ -9,10 +8,7 @@ class ExamTypesControllerTest < ActionDispatch::IntegrationTest
   end
 
   setup do
-    user = users(:one)
-    headers = { 'Accept' => 'application/json', 'Content-Type' => 'application/json' }
-    @auth_headers = Devise::JWT::TestHelpers.auth_headers(headers, user)
-
+    @auth_headers = auth_headers
     @exam_type = exam_types(:one)
     @exam_types_params = FactoryBot.create(:exam_type)
   end

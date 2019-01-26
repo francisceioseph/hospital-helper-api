@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class AddressesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_address, only: %i[show update destroy]
 
   # GET /addresses
@@ -19,7 +20,7 @@ class AddressesController < ApplicationController
     @address = Address.new(address_params)
 
     if @address.save
-      render :show
+      render :show, status: :created
     else
       render json: @address.errors, status: :unprocessable_entity
     end
@@ -29,7 +30,7 @@ class AddressesController < ApplicationController
   # PATCH/PUT /addresses/1.json
   def update
     if @address.update(address_params)
-      render :show
+      render :show, status: :ok
     else
       render json: @address.errors, status: :unprocessable_entity
     end

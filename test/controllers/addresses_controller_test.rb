@@ -8,45 +8,37 @@ class AddressesControllerTest < ActionDispatch::IntegrationTest
   end
 
   setup do
-    @new_address = Address.new(
-      profile_id: '3',
-      street_name: 'Rua da Pata de Vaca',
-      house_number: 23,
-      zipcode: '19121912-789',
-      neighborhood: 'Botao Mimoso',
-      city: 'Orquilandia',
-      state: 'Estado do Sul'
-    )
-
+    @auth_headers = auth_headers
     @address = addresses(:one)
+    @addr_factory = FactoryBot.create(:address)
   end
 
   test 'should get index' do
-    get addresses_url, as: :json
+    get addresses_url, headers: @auth_headers, as: :json
     assert_response :success
   end
 
   test 'should create address' do
     assert_difference('Address.count') do
-      post addresses_url, params: { address: @new_address.attributes }, as: :json
+      post addresses_url, headers: @auth_headers, params: @addr_factory, as: :json
     end
 
-    assert_response 200
+    assert_response 201
   end
 
   test 'should show address' do
-    get address_url(@address), as: :json
+    get address_url(@address), headers: @auth_headers, as: :json
     assert_response :success
   end
 
   test 'should update address' do
-    patch address_url(@address), params: { address: { street_name: 'Rua das Flores', house_number: 34 } }, as: :json
+    patch address_url(@address), headers: @auth_headers, params: @addr_factory, as: :json
     assert_response 200
   end
 
   test 'should destroy address' do
     assert_difference('Address.count', -1) do
-      delete address_url(@address), as: :json
+      delete address_url(@address), headers: @auth_headers, as: :json
     end
 
     assert_response 204
