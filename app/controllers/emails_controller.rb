@@ -1,7 +1,5 @@
-# frozen_string_literal: true
-
 class EmailsController < ApplicationController
-  before_action :set_email, only: %i[show update destroy]
+  before_action :set_email, only: [:show, :update, :destroy]
 
   # GET /emails
   # GET /emails.json
@@ -11,7 +9,8 @@ class EmailsController < ApplicationController
 
   # GET /emails/1
   # GET /emails/1.json
-  def show; end
+  def show
+  end
 
   # POST /emails
   # POST /emails.json
@@ -19,7 +18,7 @@ class EmailsController < ApplicationController
     @email = Email.new(email_params)
 
     if @email.save
-      render :show
+      render :show, status: :created
     else
       render json: @email.errors, status: :unprocessable_entity
     end
@@ -29,7 +28,7 @@ class EmailsController < ApplicationController
   # PATCH/PUT /emails/1.json
   def update
     if @email.update(email_params)
-      render :show
+      render :show, status: :ok
     else
       render json: @email.errors, status: :unprocessable_entity
     end
@@ -42,12 +41,13 @@ class EmailsController < ApplicationController
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_email
+      @email = Email.find(params[:id])
+    end
 
-  def set_email
-    @email = Email.find(params[:id])
-  end
-
-  def email_params
-    params.require(:email).permit(:address, :profile_id)
-  end
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def email_params
+      params.require(:email).permit(:address, :profile_id)
+    end
 end
