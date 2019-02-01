@@ -51,15 +51,30 @@ class DoctorsController < ApplicationController
     def doctor_params
       params.require(:doctor).permit(
         doctor_specialties_attributes: [:specialty_id],
-        personal_datum_attributes: [
-          :full_name,
-          :social_name,
-          :rg,
-          :cpf,
-          :nis,
-          :nationality,
-          :skin_color,
-          :gender
+        personal_datum_attributes: %i[
+          full_name
+          social_name
+          rg
+          cpf
+          nis
+          nationality
+          skin_color
+          gender
+        ],
+        addresses_attributes: %i[
+          street_name
+          house_number
+          zipcode
+          neighborhood
+          city
+          state
+        ],
+        telephones_attributes: %i[
+          number
+          contact_person
+        ],
+        emails_attributes: %i[
+          address
         ]
       )
     end
