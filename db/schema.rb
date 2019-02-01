@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_01_185640) do
+ActiveRecord::Schema.define(version: 2019_02_01_194903) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "street_name"
@@ -145,6 +145,13 @@ ActiveRecord::Schema.define(version: 2019_02_01_185640) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "permissions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "resource_name"
+    t.string "action_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "personal_data", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "full_name"
     t.string "social_name"
@@ -203,6 +210,22 @@ ActiveRecord::Schema.define(version: 2019_02_01_185640) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["pacient_id"], name: "index_prontuarios_on_pacient_id"
+  end
+
+  create_table "role_permissions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "role_id"
+    t.bigint "permission_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["permission_id"], name: "index_role_permissions_on_permission_id"
+    t.index ["role_id"], name: "index_role_permissions_on_role_id"
+  end
+
+  create_table "roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "role_name"
+    t.string "role_description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "specialties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
