@@ -1,11 +1,11 @@
 class DoctorsController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user! 
   before_action :set_doctor, only: [:show, :update, :destroy]
 
   # GET /doctors
   # GET /doctors.json
   def index
-    @doctors = Doctor.all
+    @doctors = Doctor.all.includes(:specialties)
   end
 
   # GET /doctors/1
@@ -50,7 +50,7 @@ class DoctorsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def doctor_params
       params.require(:doctor).permit(
-        specialties_attributes: [:id]
+        doctor_specialties_attributes: [:specialty_id]
       )
     end
 end

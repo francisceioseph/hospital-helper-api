@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_12_180914) do
+ActiveRecord::Schema.define(version: 2019_02_01_123300) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "street_name"
@@ -59,6 +59,15 @@ ActiveRecord::Schema.define(version: 2019_01_12_180914) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["personal_datum_id"], name: "index_birth_data_on_personal_datum_id"
+  end
+
+  create_table "doctor_specialties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "doctor_id"
+    t.bigint "specialty_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["doctor_id"], name: "index_doctor_specialties_on_doctor_id"
+    t.index ["specialty_id"], name: "index_doctor_specialties_on_specialty_id"
   end
 
   create_table "emails", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -113,6 +122,7 @@ ActiveRecord::Schema.define(version: 2019_01_12_180914) do
 
   create_table "jwt_blacklist", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "jti", null: false
+    t.datetime "exp", null: false
     t.index ["jti"], name: "index_jwt_blacklist_on_jti"
   end
 
@@ -175,12 +185,10 @@ ActiveRecord::Schema.define(version: 2019_01_12_180914) do
     t.index ["pacient_id"], name: "index_prontuarios_on_pacient_id"
   end
 
-  create_table "speciaties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "specialties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "specialty_name"
-    t.bigint "profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["profile_id"], name: "index_speciaties_on_profile_id"
   end
 
   create_table "surgery_appointments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

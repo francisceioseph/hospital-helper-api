@@ -7,3 +7,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Specialty.destroy_all
+
+Specialty.create!([
+  {
+    id: 1,
+    specialty_name: 'Oftamologia'
+  }
+])
