@@ -1,0 +1,1 @@
+json.partial! 'family_data/family_datum', family_datum: @family_datum
