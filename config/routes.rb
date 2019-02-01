@@ -17,11 +17,15 @@ Rails.application.routes.draw do
   post  '/doctors', to: 'doctors#create'
   get   '/doctors/:id', to: 'doctors#show'
   patch '/doctors/:id', to: 'doctors#update'
+  get   '/doctors/:id/appointments', to: 'doctors#appointments'
+  get   '/doctors/:id/exams', to: 'doctors#exams'
 
   get   '/pacients', to: 'pacients#index'
   post  '/pacients', to: 'pacients#create'
   patch '/pacients/:id', to: 'pacients#update'
   get   '/pacients/:id', to: 'pacients#show'
+  get   '/pacients/:id/appointments', to: 'pacients#appointments'
+  get   '/pacients/:id/exams', to: 'pacients#exams'
 
   get   '/addresses', to: 'addresses#index'
   post  '/addresses', to: 'addresses#create'

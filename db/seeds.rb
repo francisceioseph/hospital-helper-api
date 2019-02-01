@@ -16,3 +16,13 @@ Specialty.create!([
     specialty_name: 'Oftamologia'
   }
 ])
+
+User.destroy_all
+User.create!([
+  {
+    id: 1,
+    email: 'admin@admin.com',
+    password: 'admin@123',
+    password_confirmation: 'admin@123'
+  }
+])

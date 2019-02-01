@@ -1,14 +1,22 @@
 # frozen_string_literal: true
 
 class PacientsController < ApplicationController
-  # before_action :authenticate_user!
-  before_action :set_pacient, only: %i[show update destroy]
+  before_action :authenticate_user!
+  before_action :set_pacient, only: %i[show update destroy appointments exams]
 
   # GET /pacients
   # GET /pacients.json
   def index
     @pacients = Pacient.all
   end
+
+  # GET /pacients/1/appointments
+  # GET /pacients/1/appointments.json
+  def appointments; end
+
+  # GET /pacients/1/exams
+  # GET /pacients/1/exams.json
+  def exams; end
 
   # GET /pacients/1
   # GET /pacients/1.json

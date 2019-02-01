@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+json.id           exam.id
 json.scheduled_to exam.scheduled_to
 json.finished     exam.finished
 json.canceled     exam.canceled

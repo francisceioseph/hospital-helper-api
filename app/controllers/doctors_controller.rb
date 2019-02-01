@@ -1,12 +1,20 @@
 class DoctorsController < ApplicationController
-  before_action :authenticate_user! 
-  before_action :set_doctor, only: [:show, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :set_doctor, only: [:show, :update, :destroy, :appointments, :exams]
 
   # GET /doctors
   # GET /doctors.json
   def index
     @doctors = Doctor.all.includes(:specialties)
   end
+
+  # GET /doctors/1/appointments
+  # GET /doctors/1/appointments.json
+  def appointments; end
+
+  # GET /doctors/1/exams
+  # GET /doctors/1/exams.json
+  def exams; end
 
   # GET /doctors/1
   # GET /doctors/1.json
