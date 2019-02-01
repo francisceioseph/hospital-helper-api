@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_01_123300) do
+ActiveRecord::Schema.define(version: 2019_02_01_185640) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "street_name"
@@ -105,10 +105,10 @@ ActiveRecord::Schema.define(version: 2019_02_01_123300) do
     t.string "mother_name"
     t.string "father_name"
     t.boolean "is_family_head"
-    t.bigint "profile_id"
+    t.bigint "pacient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["profile_id"], name: "index_family_data_on_profile_id"
+    t.index ["pacient_id"], name: "index_family_data_on_profile_id"
   end
 
   create_table "immigration_data", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -132,6 +132,17 @@ ActiveRecord::Schema.define(version: 2019_02_01_123300) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["prescription_item_id"], name: "index_medications_on_prescription_item_id"
+  end
+
+  create_table "menu_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "code"
+    t.string "bread_parent_code"
+    t.string "menu_parent_code"
+    t.string "route"
+    t.string "icon"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "personal_data", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -168,6 +179,15 @@ ActiveRecord::Schema.define(version: 2019_02_01_123300) do
     t.index ["appointment_id"], name: "index_prescriptions_on_appointment_id"
     t.index ["doctor_id"], name: "index_prescriptions_on_doctor_id"
     t.index ["pacient_id"], name: "index_prescriptions_on_pacient_id"
+  end
+
+  create_table "profile_menu_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "profile_id"
+    t.bigint "menu_item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["menu_item_id"], name: "index_profile_menu_items_on_menu_item_id"
+    t.index ["profile_id"], name: "index_profile_menu_items_on_profile_id"
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

@@ -26,3 +26,12 @@ User.create!([
     password_confirmation: 'admin@123'
   }
 ])
+
+Profile.destroy_all
+Profile.create!([
+  {
+    id: 1,
+    user_id: 1,
+    profile_type: 'Almight'
+  }
+])
