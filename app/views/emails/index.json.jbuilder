@@ -1,1 +1,1 @@
-json.array! @emails, partial: 'emails/email', as: :email
+json.array! @emails, partial: 'emails/email', as: :specialty

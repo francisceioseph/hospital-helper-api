@@ -6,6 +6,4 @@ class Pacient < Profile
   has_many :appointments, inverse_of: :pacient
 
   accepts_nested_attributes_for :family_datum, allow_destroy: true
-  accepts_nested_attributes_for :prontuario, allow_destroy: true
-  accepts_nested_attributes_for :appointments, allow_destroy: true
 end
