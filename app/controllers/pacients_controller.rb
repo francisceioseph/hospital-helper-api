@@ -69,6 +69,7 @@ class PacientsController < ApplicationController
         nationality
         skin_color
         gender
+        cns
       ],
       addresses_attributes: %i[
         street_name
