@@ -1,2 +1,2 @@
-json.partial! "specialties/specialty", email: @specialty
+json.partial! "specialties/specialty", specialty: @specialty
 

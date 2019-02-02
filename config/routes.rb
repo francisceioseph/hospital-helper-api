@@ -74,4 +74,10 @@ Rails.application.routes.draw do
   post  '/surgery-types', to: 'surgery_types#create'
   get   '/surgery-types/:id', to: 'surgery_types#show'
   patch '/surgery-types/:id', to: 'surgery_types#update'
+
+  get   '/specialties', to: 'specialties#index'
+  post  '/specialties', to: 'specialties#create'
+  get   '/specialties/:id', to: 'specialties#show'
+  patch '/specialties/:id', to: 'specialties#update'
+  delete '/specialties/:id', to: 'specialties#destroy'
 end
