@@ -68,6 +68,7 @@ class DoctorsController < ApplicationController
           nationality
           skin_color
           gender
+          crm
         ],
         addresses_attributes: %i[
           street_name

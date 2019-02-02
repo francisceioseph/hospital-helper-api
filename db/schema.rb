@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_01_194903) do
+ActiveRecord::Schema.define(version: 2019_02_02_175718) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "street_name"
@@ -164,6 +164,7 @@ ActiveRecord::Schema.define(version: 2019_02_01_194903) do
     t.bigint "profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "crm"
     t.index ["profile_id"], name: "index_personal_data_on_profile_id"
   end
 

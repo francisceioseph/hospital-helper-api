@@ -7,4 +7,5 @@ if personal_datum.present?
   json.nationality personal_datum.nationality
   json.skin_color  personal_datum.skin_color
   json.gender      personal_datum.gender
+  json.crm         personal_datum.crm if personal_datum.crm.present?
 end
