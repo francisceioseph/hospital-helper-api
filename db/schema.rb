@@ -28,10 +28,8 @@ ActiveRecord::Schema.define(version: 2019_02_03_104612) do
   create_table "appointment_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "appointment_type_name"
     t.string "appointment_type_description"
-    t.bigint "appointment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["appointment_id"], name: "index_appointment_types_on_appointment_id"
   end
 
   create_table "appointments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -43,8 +41,10 @@ ActiveRecord::Schema.define(version: 2019_02_03_104612) do
     t.bigint "doctor_id"
     t.bigint "pacient_id"
     t.bigint "prontuario_id"
+    t.bigint "appointment_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["appointment_type_id"], name: "index_appointments_on_appointment_type_id"
     t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
     t.index ["pacient_id"], name: "index_appointments_on_pacient_id"
     t.index ["prontuario_id"], name: "index_appointments_on_prontuario_id"
@@ -97,12 +97,14 @@ ActiveRecord::Schema.define(version: 2019_02_03_104612) do
     t.timestamp "scheduled_to"
     t.boolean "finished"
     t.boolean "canceled"
+    t.bigint "exam_type_id"
     t.bigint "prontuario_id"
     t.bigint "doctor_id"
     t.bigint "pacient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["doctor_id"], name: "index_exam_appointments_on_doctor_id"
+    t.index ["exam_type_id"], name: "index_exam_appointments_on_exam_type_id"
     t.index ["pacient_id"], name: "index_exam_appointments_on_pacient_id"
     t.index ["prontuario_id"], name: "index_exam_appointments_on_prontuario_id"
   end
@@ -110,10 +112,8 @@ ActiveRecord::Schema.define(version: 2019_02_03_104612) do
   create_table "exam_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "exam_type_name"
     t.string "exam_type_description"
-    t.bigint "exam_appointments_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["exam_appointments_id"], name: "index_exam_types_on_exam_appointments_id"
   end
 
   create_table "family_data", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -123,12 +123,12 @@ ActiveRecord::Schema.define(version: 2019_02_03_104612) do
     t.bigint "pacient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["pacient_id"], name: "index_family_data_on_profile_id"
+    t.index ["pacient_id"], name: "index_family_data_on_pacient_id"
   end
 
   create_table "immigration_data", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "nationalization_date"
-    t.date "oridinance_date"
+    t.string "oridinance_date"
     t.bigint "personal_datum_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -147,17 +147,6 @@ ActiveRecord::Schema.define(version: 2019_02_03_104612) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["prescription_item_id"], name: "index_medications_on_prescription_item_id"
-  end
-
-  create_table "menu_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "code"
-    t.string "bread_parent_code"
-    t.string "menu_parent_code"
-    t.string "route"
-    t.string "icon"
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "next_of_kins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -212,15 +201,6 @@ ActiveRecord::Schema.define(version: 2019_02_03_104612) do
     t.index ["appointment_id"], name: "index_prescriptions_on_appointment_id"
     t.index ["doctor_id"], name: "index_prescriptions_on_doctor_id"
     t.index ["pacient_id"], name: "index_prescriptions_on_pacient_id"
-  end
-
-  create_table "profile_menu_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "profile_id"
-    t.bigint "menu_item_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["menu_item_id"], name: "index_profile_menu_items_on_menu_item_id"
-    t.index ["profile_id"], name: "index_profile_menu_items_on_profile_id"
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

@@ -58,6 +58,7 @@ class ExamsController < ApplicationController
       :prontuario_id,
       :doctor_id,
       :pacient_id
+      :exam_type_id
     )
   end
 end

@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 class ExamType < ApplicationRecord
-  belongs_to :exam_appointment, required: false
+  has_many :exam_appointments
 end

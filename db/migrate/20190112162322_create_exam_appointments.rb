@@ -7,6 +7,7 @@ class CreateExamAppointments < ActiveRecord::Migration[5.2]
       t.boolean :finished
       t.boolean :canceled
 
+      t.belongs_to :exam_type
       t.belongs_to :prontuario
       t.belongs_to :doctor
       t.belongs_to :pacient

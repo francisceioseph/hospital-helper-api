@@ -6,8 +6,6 @@ class CreateAppointmentTypes < ActiveRecord::Migration[5.2]
       t.string :appointment_type_name
       t.string :appointment_type_description
 
-      t.belongs_to :appointment
-
       t.timestamps
     end
   end
