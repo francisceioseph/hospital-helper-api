@@ -7,6 +7,13 @@ json.personal_datum do
   json.partial! "personal_data/personal_datum", personal_datum: pacient.personal_datum
 end
 
+if pacient.next_of_kin.present?
+  json.next_of_kin do
+    json.full_name pacient.next_of_kin.full_name
+    json.cpf       pacient.next_of_kin.cpf
+  end
+end
+
 if pacient.family_datum.present?
   json.family_datum do
     json.partial! 'family_data/family_datum', family_datum: pacient.family_datum

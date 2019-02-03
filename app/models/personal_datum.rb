@@ -2,12 +2,11 @@
 
 # the personal datum model
 class PersonalDatum < ApplicationRecord
-  validates :full_name, presence: true
-  validates :cpf, presence: true
-  validates :gender, presence: true
-
   has_one :birth_datum, required: false
   has_one :immigration_datum
 
   belongs_to :profile
+
+  accepts_nested_attributes_for :birth_datum, allow_destroy: true
+  accepts_nested_attributes_for :immigration_datum, allow_destroy: true
 end

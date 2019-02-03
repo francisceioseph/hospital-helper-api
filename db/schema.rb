@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_02_175718) do
+ActiveRecord::Schema.define(version: 2019_02_03_104612) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "street_name"
@@ -59,6 +59,21 @@ ActiveRecord::Schema.define(version: 2019_02_02_175718) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["personal_datum_id"], name: "index_birth_data_on_personal_datum_id"
+  end
+
+  create_table "demographics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "job_title"
+    t.string "job_category"
+    t.string "is_estudying"
+    t.string "degree"
+    t.string "sexual_orientation"
+    t.string "gender_identity"
+    t.string "has_special_needs"
+    t.string "special_needs"
+    t.bigint "pacient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pacient_id"], name: "index_demographics_on_pacient_id"
   end
 
   create_table "doctor_specialties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -145,6 +160,15 @@ ActiveRecord::Schema.define(version: 2019_02_02_175718) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "next_of_kins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "full_name"
+    t.string "cpf"
+    t.bigint "pacient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pacient_id"], name: "index_next_of_kins_on_pacient_id"
+  end
+
   create_table "permissions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "resource_name"
     t.string "action_type"
@@ -165,6 +189,7 @@ ActiveRecord::Schema.define(version: 2019_02_02_175718) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "crm"
+    t.string "cns"
     t.index ["profile_id"], name: "index_personal_data_on_profile_id"
   end
 
