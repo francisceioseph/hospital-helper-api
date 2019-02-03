@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+json.id                appointment.id
 json.scheduled_to      appointment.scheduled_to
 json.intended_end_time appointment.intended_end_time
 json.real_end_time     appointment.real_end_time
