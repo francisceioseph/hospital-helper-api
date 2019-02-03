@@ -51,6 +51,7 @@ class SurgeriesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def surgery_params
     params.require(:surgery).permit(
+      :surgery_type_id,
       :prontuario_id,
       :doctor_id,
       :pacient_id,

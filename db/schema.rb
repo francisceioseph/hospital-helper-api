@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_03_104612) do
+ActiveRecord::Schema.define(version: 2019_02_03_184916) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "street_name"
@@ -250,18 +250,18 @@ ActiveRecord::Schema.define(version: 2019_02_03_104612) do
     t.boolean "canceled"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "surgery_type_id"
     t.index ["doctor_id"], name: "index_surgery_appointments_on_doctor_id"
     t.index ["pacient_id"], name: "index_surgery_appointments_on_pacient_id"
     t.index ["prontuario_id"], name: "index_surgery_appointments_on_prontuario_id"
+    t.index ["surgery_type_id"], name: "index_surgery_appointments_on_surgery_type_id"
   end
 
   create_table "surgery_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "surgery_type_name"
     t.string "surgery_type_description"
-    t.bigint "surgery_appointment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["surgery_appointment_id"], name: "index_surgery_types_on_surgery_appointment_id"
   end
 
   create_table "telephones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -285,4 +285,5 @@ ActiveRecord::Schema.define(version: 2019_02_03_104612) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "surgery_appointments", "surgery_types"
 end

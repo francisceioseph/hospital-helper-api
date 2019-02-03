@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 class SurgeryType < ApplicationRecord
-  belongs_to :surgery_appointment, required: false
+  has_many :surgery_appointment
 end
