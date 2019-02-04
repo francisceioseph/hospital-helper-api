@@ -8,7 +8,7 @@ class Users::SessionsController < Devise::SessionsController
   def respond_with(resource, _opts = {})
     render json: resource.to_json({ 
       include: { 
-        profile: { methods: :profile_type },
+        profile: { methods: :profile_type, include: :personal_datum },
         role: { include: :permissions }
       }
     })

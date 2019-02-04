@@ -39,7 +39,7 @@ class AppointmentTypesController < ApplicationController
   # DELETE /appointment_types/1.json
   def destroy
     appointment_type = @appointment_type.destroy
-    render :json appointment_type, status: :ok
+    render json: appointment_type, status: :ok
   end
 
   private

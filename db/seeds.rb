@@ -553,25 +553,6 @@ Specialty.create!([
   }
 ]);
 
-User.destroy_all
-User.create!([
-  {
-    id: 1,
-    email: 'admin@admin.com',
-    password: 'admin@123',
-    password_confirmation: 'admin@123'
-  }
-])
-
-Profile.destroy_all
-Profile.create!([
-  {
-    id: 1,
-    user_id: 1,
-    profile_type: 'Almight'
-  }
-])
-
 Permission.destroy_all
 Permission.create!([
   {
@@ -676,9 +657,12 @@ Permission.create!([
   }
 ])
 
+User.destroy_all
+
 Role.destroy_all
 Role.create!([
   {
+    id: 1,
     role_name: 'Almight',
     role_permissions_attributes: [
       { permission_id: 1 }, { permission_id: 2 }, { permission_id: 3 }, { permission_id: 4 }, { permission_id: 5 },
@@ -687,4 +671,30 @@ Role.create!([
       { permission_id: 15 }, { permission_id: 16 }, { permission_id: 17 }, { permission_id: 18 }, { permission_id: 19 }, { permission_id: 20 }
     ]
   }
+])
+
+User.create!([
+  {
+    id: 1,
+    role_id: 1,
+    email: 'admin@admin.com',
+    password: 'admin@123',
+    password_confirmation: 'admin@123'
+  }
+])
+
+Profile.destroy_all
+Profile.create!([
+  {
+    id: 1,
+    user_id: 1,
+    profile_type: 'Almight',
+  }
+]);
+
+PersonalDatum.destroy_all
+PersonalDatum.create!([
+    id: 1,
+    profile_id: 1,
+    full_name: 'Administrador'
 ])
