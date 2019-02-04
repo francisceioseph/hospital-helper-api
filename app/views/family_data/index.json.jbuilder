@@ -1,0 +1,1 @@
+json.array! @family_data, partial: 'addresses/address', as: :family_datum

@@ -1,12 +1,20 @@
 class DoctorsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_doctor, only: [:show, :update, :destroy]
+  before_action :set_doctor, only: [:show, :update, :destroy, :appointments, :exams]
 
   # GET /doctors
   # GET /doctors.json
   def index
-    @doctors = Doctor.all
+    @doctors = Doctor.all.includes(:specialties)
   end
+
+  # GET /doctors/1/appointments
+  # GET /doctors/1/appointments.json
+  def appointments; end
+
+  # GET /doctors/1/exams
+  # GET /doctors/1/exams.json
+  def exams; end
 
   # GET /doctors/1
   # GET /doctors/1.json
@@ -49,6 +57,34 @@ class DoctorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def doctor_params
-      params.require(:doctor).permit()
+      params.require(:doctor).permit(
+        doctor_specialties_attributes: [:specialty_id],
+        personal_datum_attributes: %i[
+          full_name
+          social_name
+          rg
+          cpf
+          nis
+          nationality
+          skin_color
+          gender
+          crm
+        ],
+        addresses_attributes: %i[
+          street_name
+          house_number
+          zipcode
+          neighborhood
+          city
+          state
+        ],
+        telephones_attributes: %i[
+          number
+          contact_person
+        ],
+        emails_attributes: %i[
+          address
+        ]
+      )
     end
 end

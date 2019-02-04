@@ -10,6 +10,7 @@ class DoctorsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @doctor = doctors(:one)
     @doctor_params = FactoryBot.create(:doctor)
+    @doctor_specialties_params = FactoryBot.build(:doctor_specialties)
     @auth_headers = auth_headers
   end
 
@@ -23,6 +24,17 @@ class DoctorsControllerTest < ActionDispatch::IntegrationTest
       post doctors_url,
            headers: @auth_headers,
            params: @doctor_params,
+           as: :json
+    end
+
+    assert_response 201
+  end
+
+  test 'should create doctor with specialties' do
+    assert_difference('Doctor.count') do
+      post doctors_url,
+           headers: @auth_headers,
+           params: @doctor_specialties_params,
            as: :json
     end
 

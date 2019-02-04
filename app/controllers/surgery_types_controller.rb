@@ -38,7 +38,8 @@ class SurgeryTypesController < ApplicationController
   # DELETE /surgery_types/1
   # DELETE /surgery_types/1.json
   def destroy
-    @surgery_type.destroy
+    surgery_type = @surgery_type.destroy
+    render json: surgery_type, status: :ok
   end
 
   private
@@ -50,6 +51,9 @@ class SurgeryTypesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def surgery_type_params
-    params.require(:surgery_type).permit(:surgery_type_name, :surgery_type_description)
+    params.require(:surgery_type).permit(
+      :surgery_type_name,
+      :surgery_type_description
+    )
   end
 end

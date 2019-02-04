@@ -59,7 +59,8 @@ class AppointmentsController < ApplicationController
       :canceled,
       :doctor_id,
       :pacient_id,
-      :prontuario_id
+      :prontuario_id,
+      :appointment_type_id
     )
   end
 end

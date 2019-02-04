@@ -2,13 +2,21 @@
 
 class PacientsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_pacient, only: %i[show update destroy]
+  before_action :set_pacient, only: %i[show update destroy appointments exams]
 
   # GET /pacients
   # GET /pacients.json
   def index
     @pacients = Pacient.all
   end
+
+  # GET /pacients/1/appointments
+  # GET /pacients/1/appointments.json
+  def appointments; end
+
+  # GET /pacients/1/exams
+  # GET /pacients/1/exams.json
+  def exams; end
 
   # GET /pacients/1
   # GET /pacients/1.json
@@ -51,6 +59,62 @@ class PacientsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def pacient_params
-    params.require(:pacient).permit(:profile_type)
+    params.require(:pacient).permit(
+      personal_datum_attributes: [
+        :full_name,
+        :social_name,
+        :rg,
+        :cpf,
+        :nis,
+        :nationality,
+        :skin_color,
+        :gender,
+        :cns,
+        birth_datum_attributes: %i[
+          date_of_birth
+          country_of_birth
+          state_of_birth
+          city_of_birth
+        ],
+        immigration_datum_attributes: %i[
+          nationalization_date
+          oridinance_date
+        ]
+      ],
+      next_of_kin_attributes: %i[
+        full_name
+        cpf
+      ],
+      demographic_attributes: %i[
+        job_title
+        job_category
+        is_estudying
+        degree
+        sexual_orientation
+        gender_identity
+        has_special_needs
+        special_needs
+      ],
+      addresses_attributes: %i[
+        street_name
+        house_number
+        zipcode
+        neighborhood
+        city
+        state
+      ],
+      telephones_attributes: %i[
+        number
+        contact_person
+      ],
+      emails_attributes: %i[
+        address
+      ],
+      family_datum_attributes: %i[
+        mother_name
+        father_name
+        is_family_head
+      ]
+    )
   end
 end

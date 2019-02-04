@@ -9,6 +9,9 @@ class Profile < ApplicationRecord
   has_many :telephones
   has_many :emails
 
+  has_many :profile_menu_items
+  has_many :menu_items, through: :profile_menu_items
+
   accepts_nested_attributes_for :personal_datum, allow_destroy: true
   accepts_nested_attributes_for :addresses, allow_destroy: true
   accepts_nested_attributes_for :telephones, allow_destroy: true
@@ -20,10 +23,11 @@ class Profile < ApplicationRecord
 
   scope :pacients, -> { where(profile_type: 'Pacient') }
   scope :doctors, -> { where(profile_type: 'Doctor') }
+  scope :almights, -> { where(profile_type: 'Almight') }
 
   class << self
     def profile_types
-      %w[Pacient Doctor]
+      %w[Pacient Doctor Almight]
     end
   end
 end

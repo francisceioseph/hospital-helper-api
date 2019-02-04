@@ -17,11 +17,15 @@ Rails.application.routes.draw do
   post  '/doctors', to: 'doctors#create'
   get   '/doctors/:id', to: 'doctors#show'
   patch '/doctors/:id', to: 'doctors#update'
+  get   '/doctors/:id/appointments', to: 'doctors#appointments'
+  get   '/doctors/:id/exams', to: 'doctors#exams'
 
   get   '/pacients', to: 'pacients#index'
   post  '/pacients', to: 'pacients#create'
   patch '/pacients/:id', to: 'pacients#update'
   get   '/pacients/:id', to: 'pacients#show'
+  get   '/pacients/:id/appointments', to: 'pacients#appointments'
+  get   '/pacients/:id/exams', to: 'pacients#exams'
 
   get   '/addresses', to: 'addresses#index'
   post  '/addresses', to: 'addresses#create'
@@ -50,6 +54,7 @@ Rails.application.routes.draw do
   post  '/exam-types', to: 'exam_types#create'
   get   '/exam-types/:id', to: 'exam_types#show'
   patch '/exam-types/:id', to: 'exam_types#update'
+  delete '/exam-types/:id', to: 'exam_types#destroy'
 
   get   '/appointments', to: 'appointments#index'
   post  '/appointments', to: 'appointments#create'
@@ -60,6 +65,7 @@ Rails.application.routes.draw do
   post  '/appointment-types', to: 'appointment_types#create'
   get   '/appointment-types/:id', to: 'appointment_types#show'
   patch '/appointment-types/:id', to: 'appointment_types#update'
+  delete '/appointment-types/:id', to: 'appointment_types#destroy'
 
   get   '/surgeries', to: 'surgeries#index'
   post  '/surgeries', to: 'surgeries#create'
@@ -70,4 +76,15 @@ Rails.application.routes.draw do
   post  '/surgery-types', to: 'surgery_types#create'
   get   '/surgery-types/:id', to: 'surgery_types#show'
   patch '/surgery-types/:id', to: 'surgery_types#update'
+  delete '/surgery-types/:id', to: 'surgery_types#destroy'
+
+  get   '/specialties', to: 'specialties#index'
+  post  '/specialties', to: 'specialties#create'
+  get   '/specialties/:id', to: 'specialties#show'
+  patch '/specialties/:id', to: 'specialties#update'
+  delete '/specialties/:id', to: 'specialties#destroy'
+
+  get   '/roles', to: 'roles#index'
+  get   '/roles/:role_type', to: 'roles#show'
+
 end
