@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_03_184916) do
+ActiveRecord::Schema.define(version: 2019_02_04_143112) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "street_name"
@@ -232,6 +232,7 @@ ActiveRecord::Schema.define(version: 2019_02_03_184916) do
     t.string "role_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "role_type"
   end
 
   create_table "specialties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -281,9 +282,12 @@ ActiveRecord::Schema.define(version: 2019_02_03_184916) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "role_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["role_id"], name: "index_users_on_role_id"
   end
 
   add_foreign_key "surgery_appointments", "surgery_types"
+  add_foreign_key "users", "roles"
 end

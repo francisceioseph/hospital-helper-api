@@ -80,4 +80,8 @@ Rails.application.routes.draw do
   get   '/specialties/:id', to: 'specialties#show'
   patch '/specialties/:id', to: 'specialties#update'
   delete '/specialties/:id', to: 'specialties#destroy'
+
+  get   '/roles', to: 'roles#index'
+  get   '/roles/:role_type', to: 'roles#show'
+
 end
