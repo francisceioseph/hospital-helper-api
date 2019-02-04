@@ -54,6 +54,7 @@ Rails.application.routes.draw do
   post  '/exam-types', to: 'exam_types#create'
   get   '/exam-types/:id', to: 'exam_types#show'
   patch '/exam-types/:id', to: 'exam_types#update'
+  delete '/exam-types/:id', to: 'exam_types#destroy'
 
   get   '/appointments', to: 'appointments#index'
   post  '/appointments', to: 'appointments#create'
@@ -64,6 +65,7 @@ Rails.application.routes.draw do
   post  '/appointment-types', to: 'appointment_types#create'
   get   '/appointment-types/:id', to: 'appointment_types#show'
   patch '/appointment-types/:id', to: 'appointment_types#update'
+  delete '/appointment-types/:id', to: 'appointment_types#destroy'
 
   get   '/surgeries', to: 'surgeries#index'
   post  '/surgeries', to: 'surgeries#create'
@@ -74,6 +76,7 @@ Rails.application.routes.draw do
   post  '/surgery-types', to: 'surgery_types#create'
   get   '/surgery-types/:id', to: 'surgery_types#show'
   patch '/surgery-types/:id', to: 'surgery_types#update'
+  delete '/surgery-types/:id', to: 'surgery_types#destroy'
 
   get   '/specialties', to: 'specialties#index'
   post  '/specialties', to: 'specialties#create'

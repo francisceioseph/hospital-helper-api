@@ -39,7 +39,8 @@ class ExamTypesController < ApplicationController
   # DELETE /exam_types/1
   # DELETE /exam_types/1.json
   def destroy
-    @exam_type.destroy
+    exam_type = @exam_type.destroy
+    render json: exam_type, status: :ok
   end
 
   private
