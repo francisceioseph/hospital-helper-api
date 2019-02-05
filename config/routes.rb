@@ -87,4 +87,5 @@ Rails.application.routes.draw do
   get   '/roles', to: 'roles#index'
   get   '/roles/:role_type', to: 'roles#show'
 
+  get   '/profiles/:id', to: 'profiles#show'
 end
