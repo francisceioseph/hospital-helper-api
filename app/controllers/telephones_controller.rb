@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TelephonesController < ApplicationController
-  before_action :authenticate_user!
+  
   before_action :set_telephone, only: %i[show update destroy]
 
   # GET /telephones

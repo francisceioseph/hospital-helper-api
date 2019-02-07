@@ -14,4 +14,5 @@ class User < ApplicationRecord
   has_one :profile
 
   belongs_to :role, required: false
+  has_and_belongs_to_many :conversations, dependent: :destroy
 end

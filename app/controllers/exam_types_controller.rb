@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ExamTypesController < ApplicationController
-  before_action :authenticate_user!
+  
   before_action :set_exam_type, only: %i[show update destroy]
 
   # GET /exam_types

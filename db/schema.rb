@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_04_143112) do
+ActiveRecord::Schema.define(version: 2019_02_07_194210) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "street_name"
@@ -59,6 +59,18 @@ ActiveRecord::Schema.define(version: 2019_02_04_143112) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["personal_datum_id"], name: "index_birth_data_on_personal_datum_id"
+  end
+
+  create_table "conversations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "conversations_users", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "conversation_id", null: false
+    t.index ["conversation_id", "user_id"], name: "index_conversations_users_on_conversation_id_and_user_id"
+    t.index ["user_id", "conversation_id"], name: "index_conversations_users_on_user_id_and_conversation_id"
   end
 
   create_table "demographics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -147,6 +159,16 @@ ActiveRecord::Schema.define(version: 2019_02_04_143112) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["prescription_item_id"], name: "index_medications_on_prescription_item_id"
+  end
+
+  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "conversation_id"
+    t.bigint "user_id"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "next_of_kins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -288,6 +310,7 @@ ActiveRecord::Schema.define(version: 2019_02_04_143112) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  add_foreign_key "messages", "users"
   add_foreign_key "surgery_appointments", "surgery_types"
   add_foreign_key "users", "roles"
 end

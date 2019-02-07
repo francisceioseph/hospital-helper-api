@@ -3,7 +3,9 @@
 class ApplicationController < ActionController::API
   include Pundit
   include ActionController::MimeResponds
-  
+
+  before_action :authenticate_user!
+
   def render_resource(resource)
     if resource.errors.empty?
       render json: resource
