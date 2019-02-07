@@ -35,6 +35,8 @@ gem 'devise'
 gem 'devise-jwt'
 gem 'dotenv-rails'
 gem 'pundit'
+gem 'wicked_pdf', '~> 1.1'
+gem 'wkhtmltopdf-binary'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

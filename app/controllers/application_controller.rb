@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::API
   include Pundit
+  include ActionController::MimeResponds
   
   def render_resource(resource)
     if resource.errors.empty?
@@ -18,7 +19,8 @@ class ApplicationController < ActionController::API
           status: '400',
           title: 'Bad Request',
           detail: resource.errors,
-          code: '100'
+          code: '100',
+          page_size: 'a5'
         }
       ]
     }, status: :bad_request
