@@ -660,6 +660,11 @@ Permission.create!([
     action_type: :view,
     resource_name: 'profile'
   }
+  {
+    id: 22,
+    action_type: :view,
+    resource_name: 'mensagens'
+  }
 ])
 
 User.destroy_all
@@ -674,7 +679,7 @@ Role.create!([
       { permission_id: 6 }, { permission_id: 7 }, { permission_id: 8 }, { permission_id: 9 }, { permission_id: 9 },
       { permission_id: 10 }, { permission_id: 11 }, { permission_id: 12 }, { permission_id: 13 }, { permission_id: 14 },
       { permission_id: 15 }, { permission_id: 16 }, { permission_id: 17 }, { permission_id: 18 }, { permission_id: 19 },
-      { permission_id: 20 }, { permission_id: 21 }
+      { permission_id: 20 }, { permission_id: 21 }, { permission_id: 22}
     ]
   }
 ])

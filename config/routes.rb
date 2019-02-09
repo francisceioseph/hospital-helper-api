@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'messages/index'
+  get 'messages/create'
   get 'conversations/index'
   get 'conversations/create'
   devise_for :users,
@@ -14,6 +16,9 @@ Rails.application.routes.draw do
                sessions: 'users/sessions',
                registrations: 'users/registrations'
              }
+
+  resources :conversations, only: [:index, :create]
+  resources :messages, only: [:create]
 
   mount ActionCable.server => '/cable'
 

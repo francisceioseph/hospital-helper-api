@@ -1,17 +1,15 @@
+# frozen_string_literal: true
+
 class MessageBroadcastJob < ApplicationJob
   queue_as :default
 
   def perform(message)
-    payload = {
-      room_id: message.conversation.id,
-      content: message.content,
-      sender: message.sender,
-      participants: message.conversation.users.collect(&:id)
-    }
-    ActionCable.server.broadcast(build_room_id(message.conversation.id), payload)
-  end
-  
-  def build_room_id(id)
-    "ChatRoom-#{id}"
+    conversation = message.conversation
+
+    serialized_data = ActiveModelSerializers::Adapter::Json.new(
+      MessageSerializer.new(message)
+    ).serializable_hash
+
+    MessagesChannel.broadcast_to conversation, serialized_data
   end
 end
