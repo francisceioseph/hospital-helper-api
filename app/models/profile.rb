@@ -9,9 +9,6 @@ class Profile < ApplicationRecord
   has_many :telephones, dependent: :destroy
   has_many :emails, dependent: :destroy
 
-  has_many :profile_menu_items, dependent: :destroy
-  has_many :menu_items, through: :profile_menu_items, dependent: :destroy
-
   accepts_nested_attributes_for :personal_datum, allow_destroy: true
   accepts_nested_attributes_for :addresses, allow_destroy: true
   accepts_nested_attributes_for :telephones, allow_destroy: true

@@ -43,7 +43,9 @@ class AddPermissionsSeeder < Germinator::Seed
   # Code to execute during the germinate process (up).
   #
   def germinate
+    RolePermission.destroy_all
     Permission.destroy_all
+
     Permission.create!([
     {
         id: 1,
@@ -163,6 +165,7 @@ class AddPermissionsSeeder < Germinator::Seed
   # Code to execute during the shrivel process (down).
   #
   def shrivel
+    RolePermission.destroy_all
     Permission.destroy_all
   end
 
