@@ -3,14 +3,14 @@
 class Profile < ApplicationRecord
   validates :profile_type, presence: true
 
-  has_one :personal_datum, required: false
+  has_one :personal_datum, required: false, dependent: :destroy
 
-  has_many :addresses
-  has_many :telephones
-  has_many :emails
+  has_many :addresses, dependent: :destroy
+  has_many :telephones, dependent: :destroy
+  has_many :emails, dependent: :destroy
 
-  has_many :profile_menu_items
-  has_many :menu_items, through: :profile_menu_items
+  has_many :profile_menu_items, dependent: :destroy
+  has_many :menu_items, through: :profile_menu_items, dependent: :destroy
 
   accepts_nested_attributes_for :personal_datum, allow_destroy: true
   accepts_nested_attributes_for :addresses, allow_destroy: true

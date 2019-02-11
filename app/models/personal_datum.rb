@@ -2,8 +2,8 @@
 
 # the personal datum model
 class PersonalDatum < ApplicationRecord
-  has_one :birth_datum, required: false
-  has_one :immigration_datum
+  has_one :birth_datum, required: false, dependent: :destroy
+  has_one :immigration_datum, dependent: :destroy
 
   belongs_to :profile
 
