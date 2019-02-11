@@ -39,6 +39,7 @@ gem 'wicked_pdf', '~> 1.1'
 gem 'wkhtmltopdf-binary'
 gem 'jwt'
 gem 'active_model_serializers', '~> 0.10.0'
+gem "germinator", github: "WowzaMediaSystems/germinator"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

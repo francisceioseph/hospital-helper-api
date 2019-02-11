@@ -2,7 +2,7 @@ default: &default
   adapter: mysql2
   encoding: utf8
   username: root
-  password: '123456'
+  password: ""
   host: 127.0.0.1
   port: 3306
 
@@ -17,4 +17,3 @@ test:
 production:
   <<: *default
   database: production_db
-

@@ -138,6 +138,14 @@ ActiveRecord::Schema.define(version: 2019_02_07_194210) do
     t.index ["pacient_id"], name: "index_family_data_on_pacient_id"
   end
 
+  create_table "germinator_seeds", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "version", limit: 20, null: false
+    t.string "name", limit: 300, null: false
+    t.string "response", limit: 40, null: false
+    t.string "message", limit: 300
+    t.text "configuration"
+  end
+
   create_table "immigration_data", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "nationalization_date"
     t.string "oridinance_date"
@@ -310,7 +318,6 @@ ActiveRecord::Schema.define(version: 2019_02_07_194210) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
-  add_foreign_key "messages", "users"
   add_foreign_key "surgery_appointments", "surgery_types"
   add_foreign_key "users", "roles"
 end
