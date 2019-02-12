@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   resources :conversations, only: [:index, :create]
   resources :messages, only: [:create]
 
+  get '/conversations/users', to: 'conversations#users'
+  
   mount ActionCable.server => '/cable'
 
   get   '/doctors', to: 'doctors#index'

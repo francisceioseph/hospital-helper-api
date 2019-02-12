@@ -15,6 +15,10 @@ class ConversationsController < ApplicationController
     head :ok
   end
 
+  def users
+    @users = User.all
+  end
+
   private
 
   def conversation_params
