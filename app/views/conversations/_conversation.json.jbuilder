@@ -11,10 +11,16 @@ json.users conversation.users do | user |
   end
 end
 
-json.messages conversation.messages do | message |
+json.messages conversation.messages do |message|
   json.id                   message.id
   json.content              message.content
   json.conversation_id      message.conversation_id
   json.user_id              message.user_id
   json.participants         message.conversation.users.collect(&:id)
+
+  if message.attachments.count > 0
+    json.attachments message.attachments do |attachment|
+      json.url attachment.url
+    end
+  end
 end

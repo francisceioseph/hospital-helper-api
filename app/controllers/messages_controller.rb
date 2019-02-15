@@ -16,6 +16,6 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.permit(:conversation_id, :content, :user_id, attachments_params: [])
+    params.permit(:conversation_id, :content, :user_id, attachments_params: [:name, :filename, :fileSize])
   end
 end
