@@ -20,7 +20,8 @@ json.messages conversation.messages do |message|
 
   if message.attachments.count.positive?
     json.attachments message.attachments do |attachment|
-      json.url attachment.url
+      json.url      attachment.url
+      json.filename attachment.file.identifier
     end
   end
 end
