@@ -50,6 +50,7 @@ group :development, :test do
   gem 'ruby-debug-ide'
   gem 'minitest-reporters'
   gem 'win32console' if Gem.win_platform?
+  gem 'carrierwave', '~> 1.3.1'
 end
 
 group :development do

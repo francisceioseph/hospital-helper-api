@@ -20,6 +20,9 @@ require 'rails/test_unit/railtie'
 Bundler.require(*Rails.groups)
 Dotenv::Railtie.load
 
+require 'carrierwave'
+require 'carrierwave/orm/activerecord'
+
 module HospitalHelperApi
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
