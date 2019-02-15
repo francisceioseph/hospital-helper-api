@@ -18,7 +18,7 @@ json.messages conversation.messages do |message|
   json.user_id              message.user_id
   json.participants         message.conversation.users.collect(&:id)
 
-  if message.attachments.positive?
+  if message.attachments.count.positive?
     json.attachments message.attachments do |attachment|
       json.url attachment.url
     end
