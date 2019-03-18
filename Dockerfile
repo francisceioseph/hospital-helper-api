@@ -20,4 +20,6 @@ ADD Gemfile.lock /app/Gemfile.lock
 
 # RUN gem install bundler
 
+RUN gem install bundler
+
 RUN bundle install
