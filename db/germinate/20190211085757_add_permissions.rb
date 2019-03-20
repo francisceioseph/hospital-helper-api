@@ -125,35 +125,15 @@ class AddPermissionsSeeder < Germinator::Seed
     {
         id: 16,
         action_type: :view,
-        resource_name: 'cadastro-especialidade',
+        resource_name: 'perfis-acesso'
     },
     {
         id: 17,
         action_type: :view,
-        resource_name: 'cadastro-tipo-cirurgia',
-    },
-    {
-        id: 18,
-        action_type: :view,
-        resource_name: 'cadastro-tipo-atendimento',
-    },
-    {
-        id: 19,
-        action_type: :view,
-        resource_name: 'cadastro-tipo-exame',
-    },
-    {
-        id: 20,
-        action_type: :view,
-        resource_name: 'perfis-acesso'
-    },
-    {
-        id: 21,
-        action_type: :view,
         resource_name: 'profile'
     },
     {
-        id: 22,
+        id: 18,
         action_type: :view,
         resource_name: 'mensagens'
     }
