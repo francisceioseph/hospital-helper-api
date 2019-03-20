@@ -11,8 +11,15 @@ class ConversationsController < ApplicationController
     conversation.users << current_user
     conversation.users << receiver
 
-    conversation.save
-    head :ok
+    if conversation.save
+      render json: conversation.to_json({ include: [
+        :messages, 
+        users: { include: { profile: { methods: :profile_type, include: :personal_datum }}}
+        ]
+      })
+    else
+      render json: conversation.errors
+    end
   end
 
   def users

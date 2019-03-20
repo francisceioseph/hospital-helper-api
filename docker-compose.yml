@@ -13,15 +13,14 @@ services:
     image: redis:4.0.9-alpine
     command: ["redis-server", "--appendonly", "yes"]
     hostname: redis
+    volumes:
+      - 'redis:/data'
 
   rails:
     build:
       context: .
       network: host
       dockerfile: Dockerfile
-    environment:
-      - REDIS_HOST=redis
-      - REDIS_URL=redis://redis:6379
     command: bash -c "rm -f /app/tmp/pids/server.pid || true && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - .:/app
@@ -35,6 +34,21 @@ services:
       - redis
     stdin_open: true
     tty: true
+    env_file:
+      - '.env'
+
+  cable:
+    depends_on:
+      - 'redis'
+    build: .
+    command: puma -p 28080 /app/cable/config.ru
+    ports:
+      - '28080:28080'
+    volumes:
+      - '.:/app'
+    env_file:
+      - '.env'
 
 volumes:
+  redis:
   mysql-volume:
