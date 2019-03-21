@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class AppointmentsController < ApplicationController
-  before_action :authenticate_user!
+  
   before_action :set_appointment, only: %i[show update destroy]
 
   # GET /appointments
@@ -12,7 +12,16 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments/1
   # GET /appointments/1.json
-  def show; end
+  def show
+    respond_to do |format|
+      format.json
+      format.pdf do
+        render pdf: "appointment_#{@appointment.pacient.personal_datum.full_name.parameterize.underscore}",
+          template: "appointments/show.html.erb",
+            layout: 'layouts/pdf.html'
+      end
+    end
+  end
 
   # POST /appointments
   # POST /appointments.json

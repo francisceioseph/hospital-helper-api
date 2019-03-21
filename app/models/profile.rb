@@ -3,14 +3,11 @@
 class Profile < ApplicationRecord
   validates :profile_type, presence: true
 
-  has_one :personal_datum, required: false
+  has_one :personal_datum, required: false, dependent: :destroy
 
-  has_many :addresses
-  has_many :telephones
-  has_many :emails
-
-  has_many :profile_menu_items
-  has_many :menu_items, through: :profile_menu_items
+  has_many :addresses, dependent: :destroy
+  has_many :telephones, dependent: :destroy
+  has_many :emails, dependent: :destroy
 
   accepts_nested_attributes_for :personal_datum, allow_destroy: true
   accepts_nested_attributes_for :addresses, allow_destroy: true
@@ -24,10 +21,11 @@ class Profile < ApplicationRecord
   scope :pacients, -> { where(profile_type: 'Pacient') }
   scope :doctors, -> { where(profile_type: 'Doctor') }
   scope :almights, -> { where(profile_type: 'Almight') }
+  scope :chatters, -> { where(profile_type: 'Chatter') }
 
   class << self
     def profile_types
-      %w[Pacient Doctor Almight]
+      %w[Pacient Doctor Almight Chatter]
     end
   end
 end

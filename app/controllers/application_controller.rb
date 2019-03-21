@@ -2,7 +2,10 @@
 
 class ApplicationController < ActionController::API
   include Pundit
-  
+  include ActionController::MimeResponds
+
+  before_action :authenticate_user!
+
   def render_resource(resource)
     if resource.errors.empty?
       render json: resource
@@ -18,7 +21,8 @@ class ApplicationController < ActionController::API
           status: '400',
           title: 'Bad Request',
           detail: resource.errors,
-          code: '100'
+          code: '100',
+          page_size: 'a5'
         }
       ]
     }, status: :bad_request

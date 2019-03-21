@@ -1,20 +1,22 @@
 default: &default
   adapter: mysql2
   encoding: utf8
-  username: root
-  password: ''
-  host: 127.0.0.1
-  port: 3306
+  pool: 25
+  host: <%= ENV.fetch('DATABASE_HOST') { 'localhost' } %>
+  username: <%= ENV.fetch('DATABASE_USER') { 'root' } %>
+  password: <%= ENV.fetch('DATABASE_PASSWORD') { nil } %>
+  port: <%= ENV.fetch('DATABASE_PORT') { 3306 } %>
 
 development:
   <<: *default
-  database: development_db
+  database: <%= ENV.fetch('DATABASE_NAME') { 'selfie_development' } %>
 
 test:
   <<: *default
-  database: test_db
+  database: <%= ENV.fetch('DATABASE_NAME') { 'selfie_test' } %>
 
 production:
   <<: *default
-  database: production_db
-
+  database: selfie_production
+  username: selfie
+  password: <%= ENV['selfie_DATABASE_PASSWORD'] %>

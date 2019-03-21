@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'messages/index'
+  get 'messages/create'
+  get 'conversations/index'
+  get 'conversations/create'
   devise_for :users,
              path: '',
              path_names: {
@@ -12,6 +16,13 @@ Rails.application.routes.draw do
                sessions: 'users/sessions',
                registrations: 'users/registrations'
              }
+
+  resources :conversations, only: [:index, :create]
+  resources :messages, only: [:create]
+
+  get '/conversations/users', to: 'conversations#users'
+  
+  mount ActionCable.server => '/cable'
 
   get   '/doctors', to: 'doctors#index'
   post  '/doctors', to: 'doctors#create'
@@ -87,4 +98,5 @@ Rails.application.routes.draw do
   get   '/roles', to: 'roles#index'
   get   '/roles/:role_type', to: 'roles#show'
 
+  get   '/profiles/:id', to: 'profiles#show'
 end
