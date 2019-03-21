@@ -5,8 +5,8 @@ This is the server used by the Hospital Helper and Hospital Chat applications.
 * Ruby version: 2.5.4
 
 * System dependencies
-> Docker Desktop installed.
-> Virtualization Services enabled.
+- Docker Desktop installed.
+- Virtualization Services enabled.
 
 * Configuration
 - Download the project
