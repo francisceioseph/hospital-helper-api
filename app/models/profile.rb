@@ -22,10 +22,11 @@ class Profile < ApplicationRecord
   scope :doctors, -> { where(profile_type: 'Doctor') }
   scope :almights, -> { where(profile_type: 'Almight') }
   scope :chatters, -> { where(profile_type: 'Chatter') }
+  scope :chatters, -> { where(profile_type: 'Regulator') }
 
   class << self
     def profile_types
-      %w[Pacient Doctor Almight Chatter]
+      %w[Pacient Doctor Almight Chatter Regulator]
     end
   end
 end

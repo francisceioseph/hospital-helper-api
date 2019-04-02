@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_15_120022) do
+ActiveRecord::Schema.define(version: 2019_04_02_125129) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "street_name"
@@ -138,6 +138,14 @@ ActiveRecord::Schema.define(version: 2019_02_15_120022) do
     t.index ["pacient_id"], name: "index_family_data_on_pacient_id"
   end
 
+  create_table "germinator_seeds", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "version", limit: 20, null: false
+    t.string "name", limit: 300, null: false
+    t.string "response", limit: 40, null: false
+    t.string "message", limit: 300
+    t.text "configuration"
+  end
+
   create_table "immigration_data", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "nationalization_date"
     t.string "oridinance_date"
@@ -239,6 +247,11 @@ ActiveRecord::Schema.define(version: 2019_02_15_120022) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["pacient_id"], name: "index_prontuarios_on_pacient_id"
+  end
+
+  create_table "regulators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "role_permissions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

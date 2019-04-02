@@ -1,0 +1,2 @@
+class Regulator < Profile
+end
