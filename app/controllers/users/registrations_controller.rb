@@ -13,14 +13,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def sign_up_params
+    Pretty.with_nested_attributes pretty_sign_up_params,
+                                  [profile: [:personal_datum]]
+  end
+
+  def pretty_sign_up_params 
     allowed = [
       :role_id,
       :email,
       :password,
       :password_confirmation,
-      [profile_attributes: [
+      [profile: [
         :profile_type,
-        [personal_datum_attributes: [
+        [personal_datum: [
           :full_name
         ]]
       ]]
@@ -28,4 +33,5 @@ class Users::RegistrationsController < Devise::RegistrationsController
     
     params.require(resource_name).permit(allowed)
   end
+
 end

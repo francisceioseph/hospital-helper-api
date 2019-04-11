@@ -58,9 +58,27 @@ class PacientsController < ApplicationController
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
-  def pacient_params
+  def pacient_params 
+    PrettyApi.with_nested_attributes pretty_pacient_params, 
+                                      [
+                                        :addresses,
+                                        :telephones,
+                                        :emails,
+                                        :family_datumm, 
+                                        personal_datum: [
+                                          :birth_datum,
+                                          :immigration_datum
+                                        ]
+                                      ]
+                                      
+    
+  end
+
+  def pretty_pacient_params
     params.require(:pacient).permit(
-      personal_datum_attributes: [
+      :id,
+      personal_datum: [
+        :id,
         :full_name,
         :social_name,
         :rg,
@@ -70,32 +88,21 @@ class PacientsController < ApplicationController
         :skin_color,
         :gender,
         :cns,
-        birth_datum_attributes: %i[
+        birth_datum: %i[
+          id
           date_of_birth
           country_of_birth
           state_of_birth
           city_of_birth
         ],
-        immigration_datum_attributes: %i[
+        immigration_datum: %i[
+          id
           nationalization_date
           oridinance_date
         ]
       ],
-      next_of_kin_attributes: %i[
-        full_name
-        cpf
-      ],
-      demographic_attributes: %i[
-        job_title
-        job_category
-        is_estudying
-        degree
-        sexual_orientation
-        gender_identity
-        has_special_needs
-        special_needs
-      ],
-      addresses_attributes: %i[
+      addresses: %i[
+        id
         street_name
         house_number
         zipcode
@@ -103,14 +110,17 @@ class PacientsController < ApplicationController
         city
         state
       ],
-      telephones_attributes: %i[
+      telephones: %i[
+        id
         number
         contact_person
       ],
-      emails_attributes: %i[
+      emails: %i[
+        id
         address
       ],
-      family_datum_attributes: %i[
+      family_datum: %i[
+        id
         mother_name
         father_name
         is_family_head

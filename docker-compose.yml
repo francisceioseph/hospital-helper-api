@@ -1,4 +1,4 @@
-version: '3.6'
+version: "3.6"
 services:
   mysql:
     image: mysql:5.7.22
@@ -8,13 +8,13 @@ services:
       - "3306:3306"
     volumes:
       - mysql-volume:/var/lib/mysql
-  
+
   redis:
     image: redis:4.0.9-alpine
     command: ["redis-server", "--appendonly", "yes"]
     hostname: redis
     volumes:
-      - 'redis:/data'
+      - "redis:/data"
 
   rails:
     build:
@@ -35,19 +35,19 @@ services:
     stdin_open: true
     tty: true
     env_file:
-      - '.env'
+      - ".env"
 
   cable:
     depends_on:
-      - 'redis'
+      - "redis"
     build: .
     command: puma -p 28080 /app/cable/config.ru
     ports:
-      - '28080:28080'
+      - "28080:28080"
     volumes:
-      - '.:/app'
+      - ".:/app"
     env_file:
-      - '.env'
+      - ".env"
 
 volumes:
   redis:

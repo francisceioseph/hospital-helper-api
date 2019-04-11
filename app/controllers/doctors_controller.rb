@@ -57,9 +57,22 @@ class DoctorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def doctor_params
+      PrettyApi.with_nested_attributes  pretty_doctor_params,
+                                        [
+                                          :doctor_specialties,
+                                          :personal_datum,
+                                          :addresses,
+                                          :telephones,
+                                          :emails
+                                        ]
+                                        
+
+    end
+
+    def pretty_doctor_params
       params.require(:doctor).permit(
-        doctor_specialties_attributes: [:specialty_id],
-        personal_datum_attributes: %i[
+        doctor_specialties: [:specialty_id],
+        personal_datum: %i[
           full_name
           social_name
           rg
@@ -70,7 +83,7 @@ class DoctorsController < ApplicationController
           gender
           crm
         ],
-        addresses_attributes: %i[
+        addresses: %i[
           street_name
           house_number
           zipcode
@@ -78,11 +91,11 @@ class DoctorsController < ApplicationController
           city
           state
         ],
-        telephones_attributes: %i[
+        telephones: %i[
           number
           contact_person
         ],
-        emails_attributes: %i[
+        emails: %i[
           address
         ]
       )
