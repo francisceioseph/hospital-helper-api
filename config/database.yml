@@ -20,4 +20,4 @@ production:
   <<: *default
   database: hospital_helper_production
   username: selfie
-  password: <%= ENV.fetch('DATABASE_PASSWORD') %>
+  password: <%= ENV.fetch('DATABASE_PASSWORD') {'root'} %>
