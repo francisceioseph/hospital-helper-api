@@ -27,8 +27,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :password_confirmation,
       [profile: [
         :profile_type,
-        [personal_datum: [
-          :full_name
+        [personal_datum: %i[
+          full_name
+          social_name
+          rg
+          cpf
+          nis
+          nationality
+          skin_color
+          gender
+          crm
         ]]
       ]]
     ]
