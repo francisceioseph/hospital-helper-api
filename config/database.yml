@@ -1,22 +1,23 @@
 default: &default
   adapter: mysql2
   encoding: utf8
-  pool: 25
-  host: <%= ENV.fetch('DATABASE_HOST') { 'localhost' } %>
-  username: <%= ENV.fetch('DATABASE_USER') { 'root' } %>
-  password: <%= ENV.fetch('DATABASE_PASSWORD') { nil } %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= ENV.fetch('DATABASE_HOST') { 'mysql' } %>
   port: <%= ENV.fetch('DATABASE_PORT') { 3306 } %>
+  username: <%= ENV.fetch('DATABASE_USER') { 'root' } %>
+  password: <%= ENV.fetch('DATABASE_PASSWORD') { 'root' } %>
+  socket: /tmp/mysql.sock
 
 development:
   <<: *default
-  database: <%= ENV.fetch('DATABASE_NAME') { 'selfie_development' } %>
+  database: <%= ENV.fetch('DATABASE_NAME') { 'hospital_helper_development' } %>
 
 test:
   <<: *default
-  database: <%= ENV.fetch('DATABASE_NAME') { 'selfie_test' } %>
+  database: <%= ENV.fetch('DATABASE_NAME') { 'hospital_helper_test' } %>
 
 production:
   <<: *default
-  database: selfie_production
+  database: hospital_helper_production
   username: selfie
-  password: <%= ENV['selfie_DATABASE_PASSWORD'] %>
+  password: <%= ENV.fetch('DATABASE_PASSWORD') %>

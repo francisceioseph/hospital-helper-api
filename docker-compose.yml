@@ -1,9 +1,11 @@
 version: "3.6"
 services:
   mysql:
-    image: mysql:5.7.22
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
+    image: mysql:5.7.23
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    env_file:
+      - .env
     ports:
       - "3306:3306"
     volumes:
@@ -19,16 +21,11 @@ services:
   rails:
     build:
       context: .
-      network: host
-      dockerfile: Dockerfile
     command: bash -c "rm -f /app/tmp/pids/server.pid || true && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
-      - .:/app
+      - ".:/app"
     ports:
       - "3000:3000"
-    links:
-      - mysql
-      - redis
     depends_on:
       - mysql
       - redis
@@ -38,9 +35,11 @@ services:
       - ".env"
 
   cable:
+    build:
+      context: .
     depends_on:
-      - "redis"
-    build: .
+      - rails
+      - redis
     command: puma -p 28080 /app/cable/config.ru
     ports:
       - "28080:28080"

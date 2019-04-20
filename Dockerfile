@@ -9,17 +9,14 @@ RUN apt-get install -y --no-install-recommends build-essential libpq-dev nodejs 
 RUN apt-get install -y ethtool net-tools
 RUN ethtool -s p1p1 speed 100 duplex full autoneg off
 
-RUN mkdir /app
+ENV APP /app/
 
-WORKDIR /app
+RUN mkdir $APP
+WORKDIR $APP
 
-RUN gem update --system
-
-ADD Gemfile /app/Gemfile
-ADD Gemfile.lock /app/Gemfile.lock
-
-# RUN gem install bundler
+COPY Gemfile* $APP
 
 RUN gem install bundler
-
 RUN bundle install
+
+COPY . $APP
