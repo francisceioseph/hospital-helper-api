@@ -57,16 +57,13 @@ class DoctorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def doctor_params
-      PrettyApi.with_nested_attributes  pretty_doctor_params,
-                                        [
-                                          :doctor_specialties,
-                                          :personal_datum,
-                                          :addresses,
-                                          :telephones,
-                                          :emails
-                                        ]
-                                        
+      p = pretty_doctor_params
+      p[:personal_datum_attributes] = p.delete :personal_datum
+      p[:addresses_attributes] = p.delete :addresses
+      p[:telephones_attributes] = p.delete :telephones
+      p[:emails_attributes] = p.delete :emails
 
+      p
     end
 
     def pretty_doctor_params

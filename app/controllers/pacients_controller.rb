@@ -59,19 +59,18 @@ class PacientsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def pacient_params 
-    PrettyApi.with_nested_attributes pretty_pacient_params, 
-                                      [
-                                        :addresses,
-                                        :telephones,
-                                        :emails,
-                                        :family_datumm, 
-                                        personal_datum: [
-                                          :birth_datum,
-                                          :immigration_datum
-                                        ]
-                                      ]
-                                      
-    
+    p = pretty_pacient_params
+
+    p[:personal_datum_attributes] = p.delete :personal_datum
+    p[:personal_datum_attributes][:birth_datum_attributes] = p[:personal_datum_attributes].delete :birth_datum
+    p[:personal_datum_attributes][:immigration_datum_attributes] = p[:personal_datum_attributes].delete :immigration_datum
+    p[:addresses_attributes] = p.delete :addresses
+    p[:telephones_attributes] = p.delete :telephones
+    p[:emails_attributes] = p.delete :emails
+    p[:family_datum_attributes] = p.delete :family_datum
+    p[:next_of_kin_attributes] = p.delete :next_of_kin
+
+    p
   end
 
   def pretty_pacient_params
@@ -124,6 +123,11 @@ class PacientsController < ApplicationController
         mother_name
         father_name
         is_family_head
+      ],
+      next_of_kin: %i[
+        id
+        full_name
+        cpf
       ]
     )
   end
