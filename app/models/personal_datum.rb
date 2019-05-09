@@ -7,6 +7,6 @@ class PersonalDatum < ApplicationRecord
 
   belongs_to :profile
 
-  accepts_nested_attributes_for :birth_datum, allow_destroy: true
-  accepts_nested_attributes_for :immigration_datum, allow_destroy: true
+  accepts_nested_attributes_for :birth_datum
+  accepts_nested_attributes_for :immigration_datum
 end
