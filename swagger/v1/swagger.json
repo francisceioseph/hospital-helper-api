@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "API V1",
+    "title": "HOSPITAL HELPER API [V1]",
     "version": "v1"
   },
   "paths": {
@@ -14,6 +14,12 @@
         "consumes": [
           "application/json"
         ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
         "parameters": [
           {
             "name": "doctor",
@@ -21,131 +27,178 @@
             "schema": {
               "type": "object",
               "properties": {
-                "doctor_specialties": {
-                  "type": "array",
-                  "items": {
-                    "type": "object"
-                  }
-                },
-                "personal_datum": {
+                "doctor": {
                   "type": "object",
                   "properties": {
-                    "id": {
-                      "type": "integer",
-                      "x-nullable": true
-                    },
-                    "full_name": {
-                      "type": "string"
-                    },
-                    "social_name": {
-                      "type": "string",
-                      "x-nullable": true
-                    },
-                    "rg": {
-                      "type": "string",
-                      "x-nullable": true
-                    },
-                    "cpf": {
-                      "type": "string",
-                      "x-nullable": true
-                    },
-                    "crm": {
-                      "type": "string",
-                      "x-nullable": true
-                    },
-                    "nis": {
-                      "type": "string",
-                      "x-nullable": true
-                    },
-                    "nationality": {
-                      "type": "string",
-                      "x-nullable": true
-                    },
-                    "skin_color": {
-                      "type": "string",
-                      "x-nullable": true
-                    },
-                    "gender": {
-                      "type": "string",
-                      "x-nullable": true
-                    },
-                    "birth_datum": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "integer",
-                          "x-nullable": true
-                        },
-                        "date_of_birth": {
-                          "type": "string"
-                        },
-                        "country_of_birth": {
-                          "type": "string",
-                          "x-nullable": true
-                        },
-                        "state_of_birth": {
-                          "type": "string",
-                          "x-nullable": true
-                        },
-                        "city_of_birth": {
-                          "type": "string",
-                          "x-nullable": true
-                        },
-                        "personal_datum_id": {
-                          "type": "integer",
-                          "x-nullable": true
+                    "doctor_specialties": {
+                      "type": "array",
+                      "example": [
+
+                      ],
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "example": 1
+                          }
                         }
                       }
-                    }
-                  }
-                },
-                "addresses": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "street_name": {
-                        "type": "string"
-                      },
-                      "house_number": {
-                        "type": "integer"
-                      },
-                      "zipcode": {
-                        "type": "string"
-                      },
-                      "neighborhood": {
-                        "type": "string"
-                      },
-                      "city": {
-                        "type": "string"
-                      },
-                      "state": {
-                        "type": "string"
+                    },
+                    "personal_datum": {
+                      "type": "object",
+                      "properties": {
+                        "full_name": {
+                          "type": "string",
+                          "required": true
+                        },
+                        "social_name": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "rg": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "cpf": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "crm": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "nis": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "nationality": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "skin_color": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "gender": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "birth_datum": {
+                          "type": "object",
+                          "required": false,
+                          "properties": {
+                            "date_of_birth": {
+                              "type": "string",
+                              "required": true
+                            },
+                            "country_of_birth": {
+                              "type": "string",
+                              "required": false,
+                              "example": "Brasil"
+                            },
+                            "state_of_birth": {
+                              "type": "string",
+                              "required": false,
+                              "example": "Ceará"
+                            },
+                            "city_of_birth": {
+                              "type": "string",
+                              "required": false,
+                              "example": "Aquiraz"
+                            },
+                            "personal_datum_id": {
+                              "type": "integer",
+                              "required": false,
+                              "example": 1
+                            }
+                          }
+                        }
                       }
-                    }
-                  }
-                },
-                "telephones": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "number": {
-                        "type": "string"
-                      },
-                      "contact_person": {
-                        "type": "string"
+                    },
+                    "addresses": {
+                      "type": "array",
+                      "example": [
+
+                      ],
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "required": false,
+                            "exmaple": 1
+                          },
+                          "street_name": {
+                            "type": "string",
+                            "required": true
+                          },
+                          "house_number": {
+                            "type": "integer",
+                            "required": true
+                          },
+                          "zipcode": {
+                            "type": "string",
+                            "required": true,
+                            "example": "61700-000"
+                          },
+                          "neighborhood": {
+                            "type": "string",
+                            "required": true,
+                            "example": ""
+                          },
+                          "city": {
+                            "type": "string",
+                            "required": true,
+                            "example": "Aquiraz"
+                          },
+                          "state": {
+                            "type": "strin",
+                            "required": true,
+                            "example": "Ceará"
+                          }
+                        }
                       }
-                    }
-                  }
-                },
-                "emails": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "address": {
-                        "type": "string"
+                    },
+                    "telephones": {
+                      "type": "array",
+                      "example": [
+
+                      ],
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "example": 1
+                          },
+                          "number": {
+                            "type": "string"
+                          },
+                          "contact_person": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "emails": {
+                      "type": "array",
+                      "example": [
+
+                      ],
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "required": false,
+                            "example": 1
+                          },
+                          "address": {
+                            "type": "string",
+                            "required": true
+                          }
+                        }
                       }
                     }
                   }
@@ -168,7 +221,427 @@
             "description": "Internal Server Error"
           }
         }
+      },
+      "get": {
+        "summary": "Retrieves a list containing all active doctors",
+        "tags": [
+          "Doctors"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "specialties": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "example": 1
+                        },
+                        "specialty_name": {
+                          "type": "string",
+                          "example": ""
+                        }
+                      }
+                    }
+                  },
+                  "personal_datum": {
+                    "type": "object",
+                    "properties": {
+                      "full_name": {
+                        "type": "string",
+                        "required": true
+                      },
+                      "social_name": {
+                        "type": "string",
+                        "required": false
+                      },
+                      "rg": {
+                        "type": "string",
+                        "required": false
+                      },
+                      "cpf": {
+                        "type": "string",
+                        "required": false
+                      },
+                      "crm": {
+                        "type": "string",
+                        "required": false
+                      },
+                      "nis": {
+                        "type": "string",
+                        "required": false
+                      },
+                      "nationality": {
+                        "type": "string",
+                        "required": false
+                      },
+                      "skin_color": {
+                        "type": "string",
+                        "required": false
+                      },
+                      "gender": {
+                        "type": "string",
+                        "required": false
+                      },
+                      "birth_datum": {
+                        "type": "object",
+                        "required": false,
+                        "properties": {
+                          "date_of_birth": {
+                            "type": "string",
+                            "required": true
+                          },
+                          "country_of_birth": {
+                            "type": "string",
+                            "required": false,
+                            "example": "Brasil"
+                          },
+                          "state_of_birth": {
+                            "type": "string",
+                            "required": false,
+                            "example": "Ceará"
+                          },
+                          "city_of_birth": {
+                            "type": "string",
+                            "required": false,
+                            "example": "Aquiraz"
+                          },
+                          "personal_datum_id": {
+                            "type": "integer",
+                            "required": false,
+                            "example": 1
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
       }
+    },
+    "/doctors/{id}": {
+      "get": {
+        "summary": "Retrieve the doctor's profile information",
+        "tags": [
+          "Doctors"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update some doctor's profile information",
+        "tags": [
+          "Doctors"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "doctor",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "doctor": {
+                  "type": "object",
+                  "properties": {
+                    "doctor_specialties": {
+                      "type": "array",
+                      "example": [
+
+                      ],
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "example": 1
+                          },
+                          "specialty_name": {
+                            "type": "string",
+                            "example": ""
+                          }
+                        }
+                      }
+                    },
+                    "personal_datum": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "required": true,
+                          "example": 1
+                        },
+                        "full_name": {
+                          "type": "string",
+                          "required": true
+                        },
+                        "social_name": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "rg": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "cpf": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "crm": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "nis": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "nationality": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "skin_color": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "gender": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "birth_datum": {
+                          "type": "object",
+                          "required": false,
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "required": true,
+                              "example": 1
+                            },
+                            "date_of_birth": {
+                              "type": "string",
+                              "required": true
+                            },
+                            "country_of_birth": {
+                              "type": "string",
+                              "required": false,
+                              "example": "Brasil"
+                            },
+                            "state_of_birth": {
+                              "type": "string",
+                              "required": false,
+                              "example": "Ceará"
+                            },
+                            "city_of_birth": {
+                              "type": "string",
+                              "required": false,
+                              "example": "Aquiraz"
+                            },
+                            "personal_datum_id": {
+                              "type": "integer",
+                              "required": false,
+                              "example": 1
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "addresses": {
+                      "type": "array",
+                      "example": [
+
+                      ],
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "required": false,
+                            "exmaple": 1
+                          },
+                          "street_name": {
+                            "type": "string",
+                            "required": true
+                          },
+                          "house_number": {
+                            "type": "integer",
+                            "required": true
+                          },
+                          "zipcode": {
+                            "type": "string",
+                            "required": true,
+                            "example": "61700-000"
+                          },
+                          "neighborhood": {
+                            "type": "string",
+                            "required": true,
+                            "example": ""
+                          },
+                          "city": {
+                            "type": "string",
+                            "required": true,
+                            "example": "Aquiraz"
+                          },
+                          "state": {
+                            "type": "strin",
+                            "required": true,
+                            "example": "Ceará"
+                          }
+                        }
+                      }
+                    },
+                    "telephones": {
+                      "type": "array",
+                      "example": [
+
+                      ],
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "example": 1
+                          },
+                          "number": {
+                            "type": "string"
+                          },
+                          "contact_person": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "emails": {
+                      "type": "array",
+                      "example": [
+
+                      ],
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "required": false,
+                            "example": 1
+                          },
+                          "address": {
+                            "type": "string",
+                            "required": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "required": [
+                "personal_datum"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a doctor from the database",
+        "tags": [
+          "Doctors"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Bearer": {
+      "description": "The user authentication token provided by Devise",
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
     }
   }
 }

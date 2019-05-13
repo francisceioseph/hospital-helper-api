@@ -46,7 +46,8 @@ class DoctorsController < ApplicationController
   # DELETE /doctors/1
   # DELETE /doctors/1.json
   def destroy
-    @doctor.destroy
+    doctor = @doctor.destroy
+    render json: doctor, status: :ok
   end
 
   private

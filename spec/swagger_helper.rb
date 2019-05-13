@@ -16,10 +16,18 @@ RSpec.configure do |config|
     'v1/swagger.json' => {
       swagger: '2.0',
       info: {
-        title: 'API V1',
+        title: 'HOSPITAL HELPER API [V1]',
         version: 'v1'
       },
-      paths: {}
+      paths: {},
+      securityDefinitions: {
+        Bearer: {
+          description: "The user authentication token provided by Devise",
+          type: :apiKey,
+          name: 'Authorization',
+          in: :header
+        }
+      }
     }
   }
 end
