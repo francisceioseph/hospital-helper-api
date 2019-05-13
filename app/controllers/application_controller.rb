@@ -5,7 +5,8 @@ class ApplicationController < ActionController::API
   include ActionController::MimeResponds
 
   before_action :authenticate_user!
-
+  before_action :set_paper_trail_whodunnit
+  
   def render_resource(resource)
     if resource.errors.empty?
       render json: resource

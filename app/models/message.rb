@@ -6,4 +6,5 @@ class Message < ApplicationRecord
 
   after_create_commit { MessageBroadcastJob.perform_later(self) }
   acts_as_paranoid
+  has_paper_trail
 end

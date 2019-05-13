@@ -7,4 +7,5 @@ class Prescription < ApplicationRecord
 
   has_many :prescription_items
   acts_as_paranoid
+  has_paper_trail
 end

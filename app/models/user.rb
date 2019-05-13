@@ -18,4 +18,5 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :profile, allow_destroy: true
   acts_as_paranoid
+  has_paper_trail
 end

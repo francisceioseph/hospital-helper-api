@@ -10,4 +10,5 @@ class PersonalDatum < ApplicationRecord
   accepts_nested_attributes_for :birth_datum
   accepts_nested_attributes_for :immigration_datum
   acts_as_paranoid
+  has_paper_trail
 end

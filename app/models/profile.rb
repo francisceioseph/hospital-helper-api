@@ -17,6 +17,7 @@ class Profile < ApplicationRecord
   belongs_to :user, required: false
 
   acts_as_paranoid
+  has_paper_trail
 
   self.inheritance_column = :profile_type
 

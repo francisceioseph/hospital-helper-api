@@ -42,6 +42,8 @@ gem 'active_model_serializers', '~> 0.10.0'
 gem "paranoia", "~> 2.2"
 gem "germinator", github: "WowzaMediaSystems/germinator"
 gem 'rswag'
+gem "paper_trail"
+gem "request_store"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

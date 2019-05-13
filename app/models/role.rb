@@ -6,4 +6,5 @@ class Role < ApplicationRecord
 
   accepts_nested_attributes_for :role_permissions
   acts_as_paranoid
+  has_paper_trail
 end

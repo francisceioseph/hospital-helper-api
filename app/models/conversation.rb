@@ -4,4 +4,5 @@ class Conversation < ApplicationRecord
 
   after_create_commit { ConversationBroadcastJob.perform_later(self) }
   acts_as_paranoid
+  has_paper_trail
 end
