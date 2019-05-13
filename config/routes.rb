@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  mount Rswag::Ui::Engine => '/api-docs'
+  mount Rswag::Api::Engine => '/api-docs'
+
+  get '/', to: redirect('/api-docs')
+
   get 'messages/index'
   get 'messages/create'
   get 'conversations/index'
