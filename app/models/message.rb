@@ -5,4 +5,5 @@ class Message < ApplicationRecord
   mount_uploaders :attachments, AttachmentUploader
 
   after_create_commit { MessageBroadcastJob.perform_later(self) }
+  acts_as_paranoid
 end

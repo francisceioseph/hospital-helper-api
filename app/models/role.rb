@@ -5,4 +5,5 @@ class Role < ApplicationRecord
   has_many :permissions, through: :role_permissions
 
   accepts_nested_attributes_for :role_permissions
+  acts_as_paranoid
 end

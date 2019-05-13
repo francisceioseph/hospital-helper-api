@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_02_125129) do
+ActiveRecord::Schema.define(version: 2019_05_13_161458) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "street_name"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2019_04_02_125129) do
     t.bigint "profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_addresses_on_deleted_at"
     t.index ["profile_id"], name: "index_addresses_on_profile_id"
   end
 
@@ -30,6 +32,8 @@ ActiveRecord::Schema.define(version: 2019_04_02_125129) do
     t.string "appointment_type_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_appointment_types_on_deleted_at"
   end
 
   create_table "appointments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -44,7 +48,9 @@ ActiveRecord::Schema.define(version: 2019_04_02_125129) do
     t.bigint "appointment_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
     t.index ["appointment_type_id"], name: "index_appointments_on_appointment_type_id"
+    t.index ["deleted_at"], name: "index_appointments_on_deleted_at"
     t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
     t.index ["pacient_id"], name: "index_appointments_on_pacient_id"
     t.index ["prontuario_id"], name: "index_appointments_on_prontuario_id"
@@ -58,12 +64,16 @@ ActiveRecord::Schema.define(version: 2019_04_02_125129) do
     t.bigint "personal_datum_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_birth_data_on_deleted_at"
     t.index ["personal_datum_id"], name: "index_birth_data_on_personal_datum_id"
   end
 
   create_table "conversations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_conversations_on_deleted_at"
   end
 
   create_table "conversations_users", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -85,6 +95,8 @@ ActiveRecord::Schema.define(version: 2019_04_02_125129) do
     t.bigint "pacient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_demographics_on_deleted_at"
     t.index ["pacient_id"], name: "index_demographics_on_pacient_id"
   end
 
@@ -93,6 +105,8 @@ ActiveRecord::Schema.define(version: 2019_04_02_125129) do
     t.bigint "specialty_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_doctor_specialties_on_deleted_at"
     t.index ["doctor_id"], name: "index_doctor_specialties_on_doctor_id"
     t.index ["specialty_id"], name: "index_doctor_specialties_on_specialty_id"
   end
@@ -102,6 +116,8 @@ ActiveRecord::Schema.define(version: 2019_04_02_125129) do
     t.bigint "profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_emails_on_deleted_at"
     t.index ["profile_id"], name: "index_emails_on_profile_id"
   end
 
@@ -115,6 +131,8 @@ ActiveRecord::Schema.define(version: 2019_04_02_125129) do
     t.bigint "pacient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_exam_appointments_on_deleted_at"
     t.index ["doctor_id"], name: "index_exam_appointments_on_doctor_id"
     t.index ["exam_type_id"], name: "index_exam_appointments_on_exam_type_id"
     t.index ["pacient_id"], name: "index_exam_appointments_on_pacient_id"
@@ -126,6 +144,8 @@ ActiveRecord::Schema.define(version: 2019_04_02_125129) do
     t.string "exam_type_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_exam_types_on_deleted_at"
   end
 
   create_table "family_data", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -135,7 +155,17 @@ ActiveRecord::Schema.define(version: 2019_04_02_125129) do
     t.bigint "pacient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_family_data_on_deleted_at"
     t.index ["pacient_id"], name: "index_family_data_on_pacient_id"
+  end
+
+  create_table "germinator_seeds", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "version", limit: 20, null: false
+    t.string "name", limit: 300, null: false
+    t.string "response", limit: 40, null: false
+    t.string "message", limit: 300
+    t.text "configuration"
   end
 
   create_table "immigration_data", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -144,6 +174,8 @@ ActiveRecord::Schema.define(version: 2019_04_02_125129) do
     t.bigint "personal_datum_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_immigration_data_on_deleted_at"
     t.index ["personal_datum_id"], name: "index_immigration_data_on_personal_datum_id"
   end
 
@@ -158,6 +190,8 @@ ActiveRecord::Schema.define(version: 2019_04_02_125129) do
     t.bigint "prescription_item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_medications_on_deleted_at"
     t.index ["prescription_item_id"], name: "index_medications_on_prescription_item_id"
   end
 
@@ -168,7 +202,9 @@ ActiveRecord::Schema.define(version: 2019_04_02_125129) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.json "attachments"
+    t.datetime "deleted_at"
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["deleted_at"], name: "index_messages_on_deleted_at"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
@@ -178,6 +214,8 @@ ActiveRecord::Schema.define(version: 2019_04_02_125129) do
     t.bigint "pacient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_next_of_kins_on_deleted_at"
     t.index ["pacient_id"], name: "index_next_of_kins_on_pacient_id"
   end
 
@@ -186,6 +224,8 @@ ActiveRecord::Schema.define(version: 2019_04_02_125129) do
     t.string "action_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_permissions_on_deleted_at"
   end
 
   create_table "personal_data", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -202,6 +242,8 @@ ActiveRecord::Schema.define(version: 2019_04_02_125129) do
     t.datetime "updated_at", null: false
     t.string "crm"
     t.string "cns"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_personal_data_on_deleted_at"
     t.index ["profile_id"], name: "index_personal_data_on_profile_id"
   end
 
@@ -212,6 +254,8 @@ ActiveRecord::Schema.define(version: 2019_04_02_125129) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_prescription_items_on_deleted_at"
     t.index ["prescription_id"], name: "index_prescription_items_on_prescription_id"
   end
 
@@ -221,7 +265,9 @@ ActiveRecord::Schema.define(version: 2019_04_02_125129) do
     t.bigint "pacient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
     t.index ["appointment_id"], name: "index_prescriptions_on_appointment_id"
+    t.index ["deleted_at"], name: "index_prescriptions_on_deleted_at"
     t.index ["doctor_id"], name: "index_prescriptions_on_doctor_id"
     t.index ["pacient_id"], name: "index_prescriptions_on_pacient_id"
   end
@@ -231,6 +277,8 @@ ActiveRecord::Schema.define(version: 2019_04_02_125129) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_profiles_on_deleted_at"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
@@ -238,6 +286,8 @@ ActiveRecord::Schema.define(version: 2019_04_02_125129) do
     t.bigint "pacient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_prontuarios_on_deleted_at"
     t.index ["pacient_id"], name: "index_prontuarios_on_pacient_id"
   end
 
@@ -251,6 +301,8 @@ ActiveRecord::Schema.define(version: 2019_04_02_125129) do
     t.bigint "permission_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_role_permissions_on_deleted_at"
     t.index ["permission_id"], name: "index_role_permissions_on_permission_id"
     t.index ["role_id"], name: "index_role_permissions_on_role_id"
   end
@@ -261,12 +313,16 @@ ActiveRecord::Schema.define(version: 2019_04_02_125129) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "role_type"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_roles_on_deleted_at"
   end
 
   create_table "specialties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "specialty_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_specialties_on_deleted_at"
   end
 
   create_table "surgery_appointments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -280,6 +336,8 @@ ActiveRecord::Schema.define(version: 2019_04_02_125129) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "surgery_type_id"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_surgery_appointments_on_deleted_at"
     t.index ["doctor_id"], name: "index_surgery_appointments_on_doctor_id"
     t.index ["pacient_id"], name: "index_surgery_appointments_on_pacient_id"
     t.index ["prontuario_id"], name: "index_surgery_appointments_on_prontuario_id"
@@ -291,6 +349,8 @@ ActiveRecord::Schema.define(version: 2019_04_02_125129) do
     t.string "surgery_type_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_surgery_types_on_deleted_at"
   end
 
   create_table "telephones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -299,6 +359,8 @@ ActiveRecord::Schema.define(version: 2019_04_02_125129) do
     t.bigint "profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_telephones_on_deleted_at"
     t.index ["profile_id"], name: "index_telephones_on_profile_id"
   end
 
@@ -311,6 +373,8 @@ ActiveRecord::Schema.define(version: 2019_04_02_125129) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "role_id"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"

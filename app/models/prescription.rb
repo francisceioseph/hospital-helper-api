@@ -6,4 +6,5 @@ class Prescription < ApplicationRecord
   belongs_to :pacient
 
   has_many :prescription_items
+  acts_as_paranoid
 end

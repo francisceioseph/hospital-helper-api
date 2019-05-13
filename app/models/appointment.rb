@@ -5,4 +5,5 @@ class Appointment < ApplicationRecord
   belongs_to :doctor
   belongs_to :pacient
   belongs_to :prontuario, required: false
+  acts_as_paranoid
 end

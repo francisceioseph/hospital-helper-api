@@ -16,13 +16,15 @@ class Profile < ApplicationRecord
 
   belongs_to :user, required: false
 
+  acts_as_paranoid
+
   self.inheritance_column = :profile_type
 
   scope :pacients, -> { where(profile_type: 'Pacient') }
   scope :doctors, -> { where(profile_type: 'Doctor') }
   scope :almights, -> { where(profile_type: 'Almight') }
   scope :chatters, -> { where(profile_type: 'Chatter') }
-  scope :chatters, -> { where(profile_type: 'Regulator') }
+  scope :regulators, -> { where(profile_type: 'Regulator') }
 
   class << self
     def profile_types

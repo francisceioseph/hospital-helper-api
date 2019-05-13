@@ -5,4 +5,5 @@ class SurgeryAppointment < ApplicationRecord
   belongs_to :surgery_type
   belongs_to :doctor
   belongs_to :pacient
+  acts_as_paranoid
 end

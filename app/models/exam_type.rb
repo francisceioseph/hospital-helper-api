@@ -2,4 +2,5 @@
 
 class ExamType < ApplicationRecord
   has_many :exam_appointments
+  acts_as_paranoid
 end

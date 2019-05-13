@@ -2,4 +2,5 @@
 
 class Medication < ApplicationRecord
   belongs_to :prescription_item
+  acts_as_paranoid
 end

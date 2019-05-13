@@ -16,5 +16,6 @@ class User < ApplicationRecord
   belongs_to :role, required: false
   has_and_belongs_to_many :conversations, dependent: :destroy
 
-  accepts_nested_attributes_for :profile, allow_destroy: true  
+  accepts_nested_attributes_for :profile, allow_destroy: true
+  acts_as_paranoid
 end

@@ -2,4 +2,5 @@
 
 class AppointmentType < ApplicationRecord
   has_many :appointments
+  acts_as_paranoid
 end
