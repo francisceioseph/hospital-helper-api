@@ -11,6 +11,18 @@ class Specialty
     }
   end
 
+  def self.for_post
+    {
+      type: :object,
+      properties: {
+        specialty_name: {
+          type: :string,
+          example: ""
+        }
+      }
+    }
+  end
+
   def self.standard
     {
       type: :object,

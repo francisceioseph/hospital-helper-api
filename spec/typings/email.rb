@@ -15,4 +15,16 @@ class Email
       }
     }
   end
+  
+  def self.for_post
+    {
+      type: :object,
+      properties: {
+        address: { 
+          type: :string, 
+          required: true
+        }
+      }
+    }
+  end
 end

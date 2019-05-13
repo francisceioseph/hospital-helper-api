@@ -12,4 +12,14 @@ class Telephone
       }
     }
   end
+  
+  def self.for_post
+    {
+      type: :object,
+      properties: {
+        number: { type: :string },
+        contact_person: { type: :string }
+      }
+    }
+  end
 end
