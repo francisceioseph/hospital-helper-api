@@ -368,6 +368,823 @@
         }
       }
     },
+    "/appointment-types": {
+      "post": {
+        "summary": "Creates a new Appointment Type",
+        "tags": [
+          "Appointment Types"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "appointment_type",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "appointment_type": {
+                  "type": "object",
+                  "properties": {
+                    "appointment_type_name": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "appointment_type_description": {
+                      "type": "string",
+                      "example": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "summary": "Retrieves a list of all active appointment types",
+        "tags": [
+          "Appointment Types"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "appointment_type_name": {
+                    "type": "string",
+                    "example": ""
+                  },
+                  "appointment_type_description": {
+                    "type": "string",
+                    "example": ""
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/appointment-types/{id}": {
+      "get": {
+        "summary": "Retrieves data regarding an appointment type record",
+        "tags": [
+          "Appointment Types"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "appointment_type_name": {
+                  "type": "string",
+                  "example": ""
+                },
+                "appointment_type_description": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update some appointment type information",
+        "tags": [
+          "Appointment Types"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "appointment_type",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "appointment_type": {
+                  "type": "object",
+                  "properties": {
+                    "appointment_type_name": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "appointment_type_description": {
+                      "type": "string",
+                      "example": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "appointment_type_name": {
+                  "type": "string",
+                  "example": ""
+                },
+                "appointment_type_description": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Removes some appointment type information",
+        "tags": [
+          "Appointment Types"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "appointment_type_name": {
+                  "type": "string",
+                  "example": ""
+                },
+                "appointment_type_description": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "summary": "Authenticate an existent user",
+        "tags": [
+          "Authentication"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string"
+                    },
+                    "password": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "updated_at": {
+                  "type": "string"
+                },
+                "role_id": {
+                  "type": "string"
+                },
+                "deleted_at": {
+                  "type": "string"
+                },
+                "profile": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "user_id": {
+                      "type": "integer"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "type": "string"
+                    },
+                    "deleted_at": {
+                      "type": "string"
+                    },
+                    "profile_type": {
+                      "type": "string"
+                    },
+                    "personal_datum": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "required": true,
+                          "example": 1
+                        },
+                        "full_name": {
+                          "type": "string",
+                          "required": true
+                        },
+                        "social_name": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "rg": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "cpf": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "crm": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "nis": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "nationality": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "skin_color": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "gender": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "birth_datum": {
+                          "type": "object",
+                          "required": false,
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "required": true,
+                              "example": 1
+                            },
+                            "date_of_birth": {
+                              "type": "string",
+                              "required": true
+                            },
+                            "country_of_birth": {
+                              "type": "string",
+                              "required": false,
+                              "example": "Brasil"
+                            },
+                            "state_of_birth": {
+                              "type": "string",
+                              "required": false,
+                              "example": "Ceará"
+                            },
+                            "city_of_birth": {
+                              "type": "string",
+                              "required": false,
+                              "example": "Aquiraz"
+                            },
+                            "personal_datum_id": {
+                              "type": "integer",
+                              "required": false,
+                              "example": 1
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "role": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "role_name": {
+                          "type": "string"
+                        },
+                        "role_description": {
+                          "type": "string"
+                        },
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "updated_at": {
+                          "type": "string"
+                        },
+                        "role_type": {
+                          "type": "string"
+                        },
+                        "deleted_at": {
+                          "type": "string"
+                        },
+                        "permissions": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "integer"
+                              },
+                              "resource_name": {
+                                "type": "integer"
+                              },
+                              "action_type": {
+                                "type": "integer"
+                              },
+                              "created_at": {
+                                "type": "integer"
+                              },
+                              "updated_at": {
+                                "type": "integer"
+                              },
+                              "deleted_at": {
+                                "type": "integer"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/logout": {
+      "delete": {
+        "summary": "Unauthenticate an user",
+        "tags": [
+          "Authentication"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/signup": {
+      "post": {
+        "summary": "Creates a new user",
+        "tags": [
+          "Authentication"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string"
+                    },
+                    "password": {
+                      "type": "string"
+                    },
+                    "profile": {
+                      "type": "object",
+                      "properties": {
+                        "profile_type": {
+                          "type": "string"
+                        },
+                        "personal_datum": {
+                          "type": "object",
+                          "properties": {
+                            "full_name": {
+                              "type": "string",
+                              "required": true
+                            },
+                            "social_name": {
+                              "type": "string",
+                              "required": false
+                            },
+                            "rg": {
+                              "type": "string",
+                              "required": false
+                            },
+                            "cpf": {
+                              "type": "string",
+                              "required": false
+                            },
+                            "crm": {
+                              "type": "string",
+                              "required": false
+                            },
+                            "nis": {
+                              "type": "string",
+                              "required": false
+                            },
+                            "nationality": {
+                              "type": "string",
+                              "required": false
+                            },
+                            "skin_color": {
+                              "type": "string",
+                              "required": false
+                            },
+                            "gender": {
+                              "type": "string",
+                              "required": false
+                            },
+                            "birth_datum": {
+                              "type": "object",
+                              "required": false,
+                              "properties": {
+                                "date_of_birth": {
+                                  "type": "string",
+                                  "required": true
+                                },
+                                "country_of_birth": {
+                                  "type": "string",
+                                  "required": false,
+                                  "example": "Brasil"
+                                },
+                                "state_of_birth": {
+                                  "type": "string",
+                                  "required": false,
+                                  "example": "Ceará"
+                                },
+                                "city_of_birth": {
+                                  "type": "string",
+                                  "required": false,
+                                  "example": "Aquiraz"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "updated_at": {
+                  "type": "string"
+                },
+                "role_id": {
+                  "type": "string"
+                },
+                "deleted_at": {
+                  "type": "string"
+                },
+                "profile": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "user_id": {
+                      "type": "integer"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "type": "string"
+                    },
+                    "deleted_at": {
+                      "type": "string"
+                    },
+                    "profile_type": {
+                      "type": "string"
+                    },
+                    "personal_datum": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "required": true,
+                          "example": 1
+                        },
+                        "full_name": {
+                          "type": "string",
+                          "required": true
+                        },
+                        "social_name": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "rg": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "cpf": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "crm": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "nis": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "nationality": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "skin_color": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "gender": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "birth_datum": {
+                          "type": "object",
+                          "required": false,
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "required": true,
+                              "example": 1
+                            },
+                            "date_of_birth": {
+                              "type": "string",
+                              "required": true
+                            },
+                            "country_of_birth": {
+                              "type": "string",
+                              "required": false,
+                              "example": "Brasil"
+                            },
+                            "state_of_birth": {
+                              "type": "string",
+                              "required": false,
+                              "example": "Ceará"
+                            },
+                            "city_of_birth": {
+                              "type": "string",
+                              "required": false,
+                              "example": "Aquiraz"
+                            },
+                            "personal_datum_id": {
+                              "type": "integer",
+                              "required": false,
+                              "example": 1
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "role": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "role_name": {
+                          "type": "string"
+                        },
+                        "role_description": {
+                          "type": "string"
+                        },
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "updated_at": {
+                          "type": "string"
+                        },
+                        "role_type": {
+                          "type": "string"
+                        },
+                        "deleted_at": {
+                          "type": "string"
+                        },
+                        "permissions": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "integer"
+                              },
+                              "resource_name": {
+                                "type": "integer"
+                              },
+                              "action_type": {
+                                "type": "integer"
+                              },
+                              "created_at": {
+                                "type": "integer"
+                              },
+                              "updated_at": {
+                                "type": "integer"
+                              },
+                              "deleted_at": {
+                                "type": "integer"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/doctors": {
       "post": {
         "summary": "Creates a Doctor Profile for a given user",
@@ -1253,6 +2070,281 @@
         }
       }
     },
+    "/exam-types": {
+      "post": {
+        "summary": "Creates a new Exam Type",
+        "tags": [
+          "Exam Types"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "exam_type",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "exam_type": {
+                  "type": "object",
+                  "properties": {
+                    "exam_type_name": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "exam_type_description": {
+                      "type": "string",
+                      "example": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "summary": "Retrieves a list of all active exam types",
+        "tags": [
+          "Exam Types"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "exam_type_name": {
+                    "type": "string",
+                    "example": ""
+                  },
+                  "exam_type_description": {
+                    "type": "string",
+                    "example": ""
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/exam-types/{id}": {
+      "get": {
+        "summary": "Retrieves data regarding an exam type record",
+        "tags": [
+          "Exam Types"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "exam_type_name": {
+                  "type": "string",
+                  "example": ""
+                },
+                "exam_type_description": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update some exam type information",
+        "tags": [
+          "Exam Types"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "exam_type",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "exam_type": {
+                  "type": "object",
+                  "properties": {
+                    "exam_type_name": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "exam_type_description": {
+                      "type": "string",
+                      "example": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "exam_type_name": {
+                  "type": "string",
+                  "example": ""
+                },
+                "exam_type_description": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Removes some exam type information",
+        "tags": [
+          "Exam Types"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "exam_type_name": {
+                  "type": "string",
+                  "example": ""
+                },
+                "exam_type_description": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/specialties": {
       "post": {
         "summary": "Creates a new Specialty",
@@ -1489,6 +2581,281 @@
                   "example": 1
                 },
                 "specialty_name": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/surgery-types": {
+      "post": {
+        "summary": "Creates a new Surgery Type",
+        "tags": [
+          "Surgery Types"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "surgery_type",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "surgery_type": {
+                  "type": "object",
+                  "properties": {
+                    "surgery_type_name": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "surgery_type_description": {
+                      "type": "string",
+                      "example": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "summary": "Retrieves a list of all active surgery types",
+        "tags": [
+          "Surgery Types"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "surgery_type_name": {
+                    "type": "string",
+                    "example": ""
+                  },
+                  "surgery_type_description": {
+                    "type": "string",
+                    "example": ""
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/surgery-types/{id}": {
+      "get": {
+        "summary": "Retrieves data regarding an surgery type record",
+        "tags": [
+          "Surgery Types"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "surgery_type_name": {
+                  "type": "string",
+                  "example": ""
+                },
+                "surgery_type_description": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update some surgery type information",
+        "tags": [
+          "Surgery Types"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "surgery_type",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "surgery_type": {
+                  "type": "object",
+                  "properties": {
+                    "surgery_type_name": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "surgery_type_description": {
+                      "type": "string",
+                      "example": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "surgery_type_name": {
+                  "type": "string",
+                  "example": ""
+                },
+                "surgery_type_description": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Removes some surgery type information",
+        "tags": [
+          "Surgery Types"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "surgery_type_name": {
+                  "type": "string",
+                  "example": ""
+                },
+                "surgery_type_description": {
                   "type": "string",
                   "example": ""
                 }
