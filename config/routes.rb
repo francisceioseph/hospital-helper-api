@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'uploads/download'
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'
 
@@ -104,4 +105,6 @@ Rails.application.routes.draw do
   get   '/roles/:role_type', to: 'roles#show'
 
   get   '/profiles/:id', to: 'profiles#show'
+
+  get 'uploads/:model_class/:mounted_as/:model_id/:basename.:extension', to: "uploads#download"
 end

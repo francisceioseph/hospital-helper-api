@@ -44,6 +44,7 @@ gem "germinator", github: "WowzaMediaSystems/germinator"
 gem 'rswag'
 gem "paper_trail"
 gem "request_store"
+gem 'carrierwave', '~> 1.3.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -54,7 +55,6 @@ group :development, :test do
   gem 'ruby-debug-ide'
   gem 'minitest-reporters'
   gem 'win32console' if Gem.win_platform?
-  gem 'carrierwave', '~> 1.3.1'
   gem 'rspec-rails', '~> 3.8'
 end
 
