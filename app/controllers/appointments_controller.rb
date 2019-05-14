@@ -27,8 +27,8 @@ class AppointmentsController < ApplicationController
   # POST /appointments.json
   def create
     @appointment = Appointment.new(appointment_params)
-
     if @appointment.save
+      AppointmentPdf.make_pdf(@appointment)
       render :show, status: :created
     else
       render json: @appointment.errors, status: :unprocessable_entity

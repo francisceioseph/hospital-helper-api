@@ -35,8 +35,6 @@ gem "devise", ">= 4.6.0"
 gem 'devise-jwt'
 gem 'dotenv-rails'
 gem 'pundit'
-gem 'wicked_pdf', '~> 1.1'
-gem 'wkhtmltopdf-binary'
 gem 'jwt'
 gem 'active_model_serializers', '~> 0.10.0'
 gem "paranoia", "~> 2.2"
@@ -45,6 +43,8 @@ gem 'rswag'
 gem "paper_trail"
 gem "request_store"
 gem 'carrierwave', '~> 1.3.1'
+gem 'prawn-rails'
+gem 'pdf-core', '~> 0.7.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

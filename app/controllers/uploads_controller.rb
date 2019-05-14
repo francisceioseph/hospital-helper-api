@@ -30,4 +30,3 @@ class UploadsController < ApplicationController
     )
   end
 end
-

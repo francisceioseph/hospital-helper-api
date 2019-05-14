@@ -3,7 +3,7 @@ FROM ruby:2.5.4-stretch
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update -qq
 RUN apt-get install -y --assume-yes apt-utils
-RUN apt-get install -y --no-install-recommends build-essential libpq-dev nodejs imagemagick mysql-client
+RUN apt-get install -y --no-install-recommends build-essential libpq-dev nodejs imagemagick  libmagickcore-dev libmagickwand-dev mysql-client
 
 #Config red to full duplex
 RUN apt-get install -y ethtool net-tools
