@@ -368,6 +368,413 @@
         }
       }
     },
+    "/appointments": {
+      "post": {
+        "summary": "Creates a new Appointment",
+        "tags": [
+          "Appointment"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "appointment",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "appointment": {
+                  "type": "object",
+                  "properties": {
+                    "scheduled_to": {
+                      "type": "string",
+                      "example": "2019-05-10T18:23:42.000Z"
+                    },
+                    "intended_end_time": {
+                      "type": "string",
+                      "example": "2019-05-10T18:23:42.000Z"
+                    },
+                    "real_end_time": {
+                      "type": "string",
+                      "example": "2019-05-10T18:23:42.000Z"
+                    },
+                    "finished": {
+                      "type": "boolean"
+                    },
+                    "canceled": {
+                      "type": "boolean"
+                    },
+                    "doctor_id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "pacient_id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "appointment_type_id": {
+                      "type": "integer",
+                      "example": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "summary": "Retrieves a list of all active appointments",
+        "tags": [
+          "Appointment"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "scheduled_to": {
+                    "type": "string",
+                    "example": "2019-05-10T18:23:42.000Z"
+                  },
+                  "intended_end_time": {
+                    "type": "string",
+                    "example": "2019-05-10T18:23:42.000Z"
+                  },
+                  "real_end_time": {
+                    "type": "string",
+                    "example": "2019-05-10T18:23:42.000Z"
+                  },
+                  "finished": {
+                    "type": "boolean"
+                  },
+                  "canceled": {
+                    "type": "boolean"
+                  },
+                  "doctor_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "pacient_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "appointment_type_id": {
+                    "type": "integer",
+                    "example": 1
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/appointments/{id}": {
+      "get": {
+        "summary": "Retrieves data regarding an appointment record",
+        "tags": [
+          "Appointment"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "scheduled_to": {
+                  "type": "string",
+                  "example": "2019-05-10T18:23:42.000Z"
+                },
+                "intended_end_time": {
+                  "type": "string",
+                  "example": "2019-05-10T18:23:42.000Z"
+                },
+                "real_end_time": {
+                  "type": "string",
+                  "example": "2019-05-10T18:23:42.000Z"
+                },
+                "finished": {
+                  "type": "boolean"
+                },
+                "canceled": {
+                  "type": "boolean"
+                },
+                "doctor_id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "pacient_id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "appointment_type_id": {
+                  "type": "integer",
+                  "example": 1
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update some appointment information",
+        "tags": [
+          "Appointment"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "appointment",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "appointment": {
+                  "type": "object",
+                  "properties": {
+                    "scheduled_to": {
+                      "type": "string",
+                      "example": "2019-05-10T18:23:42.000Z"
+                    },
+                    "intended_end_time": {
+                      "type": "string",
+                      "example": "2019-05-10T18:23:42.000Z"
+                    },
+                    "real_end_time": {
+                      "type": "string",
+                      "example": "2019-05-10T18:23:42.000Z"
+                    },
+                    "finished": {
+                      "type": "boolean"
+                    },
+                    "canceled": {
+                      "type": "boolean"
+                    },
+                    "doctor_id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "pacient_id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "appointment_type_id": {
+                      "type": "integer",
+                      "example": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "scheduled_to": {
+                  "type": "string",
+                  "example": "2019-05-10T18:23:42.000Z"
+                },
+                "intended_end_time": {
+                  "type": "string",
+                  "example": "2019-05-10T18:23:42.000Z"
+                },
+                "real_end_time": {
+                  "type": "string",
+                  "example": "2019-05-10T18:23:42.000Z"
+                },
+                "finished": {
+                  "type": "boolean"
+                },
+                "canceled": {
+                  "type": "boolean"
+                },
+                "doctor_id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "pacient_id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "appointment_type_id": {
+                  "type": "integer",
+                  "example": 1
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Removes some appointment information",
+        "tags": [
+          "Appointment"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "scheduled_to": {
+                  "type": "string",
+                  "example": "2019-05-10T18:23:42.000Z"
+                },
+                "intended_end_time": {
+                  "type": "string",
+                  "example": "2019-05-10T18:23:42.000Z"
+                },
+                "real_end_time": {
+                  "type": "string",
+                  "example": "2019-05-10T18:23:42.000Z"
+                },
+                "finished": {
+                  "type": "boolean"
+                },
+                "canceled": {
+                  "type": "boolean"
+                },
+                "doctor_id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "pacient_id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "appointment_type_id": {
+                  "type": "integer",
+                  "example": 1
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/appointment-types": {
       "post": {
         "summary": "Creates a new Appointment Type",
@@ -2070,6 +2477,365 @@
         }
       }
     },
+    "/exams": {
+      "post": {
+        "summary": "Creates a new Exam Type",
+        "tags": [
+          "Exam"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "exam",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "exam": {
+                  "type": "object",
+                  "properties": {
+                    "scheduled_to": {
+                      "type": "string",
+                      "example": "2019-05-10T18:23:42.000Z"
+                    },
+                    "finished": {
+                      "type": "boolean"
+                    },
+                    "canceled": {
+                      "type": "boolean"
+                    },
+                    "doctor_id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "pacient_id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "exam_type_id": {
+                      "type": "integer",
+                      "example": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "summary": "Retrieves a list of all active exams",
+        "tags": [
+          "Exam"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "scheduled_to": {
+                    "type": "string",
+                    "example": "2019-05-10T18:23:42.000Z"
+                  },
+                  "finished": {
+                    "type": "boolean"
+                  },
+                  "canceled": {
+                    "type": "boolean"
+                  },
+                  "doctor_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "pacient_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "exam_type_id": {
+                    "type": "integer",
+                    "example": 1
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/exams/{id}": {
+      "get": {
+        "summary": "Retrieves data regarding an exam record",
+        "tags": [
+          "Exam"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "scheduled_to": {
+                  "type": "string",
+                  "example": "2019-05-10T18:23:42.000Z"
+                },
+                "finished": {
+                  "type": "boolean"
+                },
+                "canceled": {
+                  "type": "boolean"
+                },
+                "doctor_id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "pacient_id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "exam_type_id": {
+                  "type": "integer",
+                  "example": 1
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update some exam information",
+        "tags": [
+          "Exam"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "exam",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "exam": {
+                  "type": "object",
+                  "properties": {
+                    "scheduled_to": {
+                      "type": "string",
+                      "example": "2019-05-10T18:23:42.000Z"
+                    },
+                    "finished": {
+                      "type": "boolean"
+                    },
+                    "canceled": {
+                      "type": "boolean"
+                    },
+                    "doctor_id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "pacient_id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "exam_type_id": {
+                      "type": "integer",
+                      "example": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "scheduled_to": {
+                  "type": "string",
+                  "example": "2019-05-10T18:23:42.000Z"
+                },
+                "finished": {
+                  "type": "boolean"
+                },
+                "canceled": {
+                  "type": "boolean"
+                },
+                "doctor_id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "pacient_id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "exam_type_id": {
+                  "type": "integer",
+                  "example": 1
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Removes some exam information",
+        "tags": [
+          "Exam"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "scheduled_to": {
+                  "type": "string",
+                  "example": "2019-05-10T18:23:42.000Z"
+                },
+                "finished": {
+                  "type": "boolean"
+                },
+                "canceled": {
+                  "type": "boolean"
+                },
+                "doctor_id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "pacient_id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "exam_type_id": {
+                  "type": "integer",
+                  "example": 1
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/exam-types": {
       "post": {
         "summary": "Creates a new Exam Type",
@@ -2345,6 +3111,708 @@
         }
       }
     },
+    "/pacients": {
+      "post": {
+        "summary": "Creates a pacient Profile for a given user",
+        "tags": [
+          "Pacients"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "pacient",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "pacient": {
+                  "type": "object",
+                  "properties": {
+                    "personal_datum": {
+                      "type": "object",
+                      "properties": {
+                        "full_name": {
+                          "type": "string",
+                          "required": true
+                        },
+                        "social_name": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "rg": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "cpf": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "nis": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "nationality": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "skin_color": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "gender": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "birth_datum": {
+                          "type": "object",
+                          "required": false,
+                          "properties": {
+                            "date_of_birth": {
+                              "type": "string",
+                              "required": true
+                            },
+                            "country_of_birth": {
+                              "type": "string",
+                              "required": false,
+                              "example": "Brasil"
+                            },
+                            "state_of_birth": {
+                              "type": "string",
+                              "required": false,
+                              "example": "Ceará"
+                            },
+                            "city_of_birth": {
+                              "type": "string",
+                              "required": false,
+                              "example": "Aquiraz"
+                            },
+                            "personal_datum_id": {
+                              "type": "integer",
+                              "required": false,
+                              "example": 1
+                            }
+                          }
+                        },
+                        "immigration_datum": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "nationalization_date": {
+                            "type": "string",
+                            "example": "2019-05-14T14:42:46.001Z"
+                          },
+                          "oridinance_date": {
+                            "type": "string",
+                            "example": "2019-05-14T14:42:46.001Z"
+                          }
+                        }
+                      }
+                    },
+                    "addresses": {
+                      "type": "array",
+                      "example": [
+
+                      ],
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "required": false,
+                            "exmaple": 1
+                          },
+                          "street_name": {
+                            "type": "string",
+                            "required": true
+                          },
+                          "house_number": {
+                            "type": "integer",
+                            "required": true
+                          },
+                          "zipcode": {
+                            "type": "string",
+                            "required": true,
+                            "example": "61700-000"
+                          },
+                          "neighborhood": {
+                            "type": "string",
+                            "required": true,
+                            "example": ""
+                          },
+                          "city": {
+                            "type": "string",
+                            "required": true,
+                            "example": "Aquiraz"
+                          },
+                          "state": {
+                            "type": "strin",
+                            "required": true,
+                            "example": "Ceará"
+                          }
+                        }
+                      }
+                    },
+                    "telephones": {
+                      "type": "array",
+                      "example": [
+
+                      ],
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "example": 1
+                          },
+                          "number": {
+                            "type": "string"
+                          },
+                          "contact_person": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "emails": {
+                      "type": "array",
+                      "example": [
+
+                      ],
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "required": false,
+                            "example": 1
+                          },
+                          "address": {
+                            "type": "string",
+                            "required": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "required": [
+                "personal_datum"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "summary": "Retrieves a list containing all active pacients",
+        "tags": [
+          "Pacients"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "personal_datum": {
+                    "type": "object",
+                    "properties": {
+                      "full_name": {
+                        "type": "string",
+                        "required": true
+                      },
+                      "social_name": {
+                        "type": "string",
+                        "required": false
+                      },
+                      "rg": {
+                        "type": "string",
+                        "required": false
+                      },
+                      "cpf": {
+                        "type": "string",
+                        "required": false
+                      },
+                      "nis": {
+                        "type": "string",
+                        "required": false
+                      },
+                      "nationality": {
+                        "type": "string",
+                        "required": false
+                      },
+                      "skin_color": {
+                        "type": "string",
+                        "required": false
+                      },
+                      "gender": {
+                        "type": "string",
+                        "required": false
+                      },
+                      "birth_datum": {
+                        "type": "object",
+                        "required": false,
+                        "properties": {
+                          "date_of_birth": {
+                            "type": "string",
+                            "required": true
+                          },
+                          "country_of_birth": {
+                            "type": "string",
+                            "required": false,
+                            "example": "Brasil"
+                          },
+                          "state_of_birth": {
+                            "type": "string",
+                            "required": false,
+                            "example": "Ceará"
+                          },
+                          "city_of_birth": {
+                            "type": "string",
+                            "required": false,
+                            "example": "Aquiraz"
+                          },
+                          "personal_datum_id": {
+                            "type": "integer",
+                            "required": false,
+                            "example": 1
+                          }
+                        }
+                      },
+                      "immigration_datum": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "nationalization_date": {
+                          "type": "string",
+                          "example": "2019-05-14T14:42:46.001Z"
+                        },
+                        "oridinance_date": {
+                          "type": "string",
+                          "example": "2019-05-14T14:42:46.001Z"
+                        }
+                      }
+                    }
+                  },
+                  "addresses": {
+                    "type": "array",
+                    "example": [
+
+                    ],
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "required": false,
+                          "exmaple": 1
+                        },
+                        "street_name": {
+                          "type": "string",
+                          "required": true
+                        },
+                        "house_number": {
+                          "type": "integer",
+                          "required": true
+                        },
+                        "zipcode": {
+                          "type": "string",
+                          "required": true,
+                          "example": "61700-000"
+                        },
+                        "neighborhood": {
+                          "type": "string",
+                          "required": true,
+                          "example": ""
+                        },
+                        "city": {
+                          "type": "string",
+                          "required": true,
+                          "example": "Aquiraz"
+                        },
+                        "state": {
+                          "type": "strin",
+                          "required": true,
+                          "example": "Ceará"
+                        }
+                      }
+                    }
+                  },
+                  "telephones": {
+                    "type": "array",
+                    "example": [
+
+                    ],
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "example": 1
+                        },
+                        "number": {
+                          "type": "string"
+                        },
+                        "contact_person": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "emails": {
+                    "type": "array",
+                    "example": [
+
+                    ],
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "required": false,
+                          "example": 1
+                        },
+                        "address": {
+                          "type": "string",
+                          "required": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/pacients/{id}": {
+      "get": {
+        "summary": "Retrieve the pacient's profile information",
+        "tags": [
+          "Pacients"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update some pacient's profile information",
+        "tags": [
+          "Pacients"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "pacient",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "pacient": {
+                  "type": "object",
+                  "properties": {
+                    "pacient_specialties": {
+                      "type": "array",
+                      "example": [
+
+                      ],
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "example": 1
+                          },
+                          "specialty_name": {
+                            "type": "string",
+                            "example": ""
+                          }
+                        }
+                      }
+                    },
+                    "personal_datum": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "required": true,
+                          "example": 1
+                        },
+                        "full_name": {
+                          "type": "string",
+                          "required": true
+                        },
+                        "social_name": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "rg": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "cpf": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "crm": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "nis": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "nationality": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "skin_color": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "gender": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "birth_datum": {
+                          "type": "object",
+                          "required": false,
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "required": true,
+                              "example": 1
+                            },
+                            "date_of_birth": {
+                              "type": "string",
+                              "required": true
+                            },
+                            "country_of_birth": {
+                              "type": "string",
+                              "required": false,
+                              "example": "Brasil"
+                            },
+                            "state_of_birth": {
+                              "type": "string",
+                              "required": false,
+                              "example": "Ceará"
+                            },
+                            "city_of_birth": {
+                              "type": "string",
+                              "required": false,
+                              "example": "Aquiraz"
+                            },
+                            "personal_datum_id": {
+                              "type": "integer",
+                              "required": false,
+                              "example": 1
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "addresses": {
+                      "type": "array",
+                      "example": [
+
+                      ],
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "required": false,
+                            "exmaple": 1
+                          },
+                          "street_name": {
+                            "type": "string",
+                            "required": true
+                          },
+                          "house_number": {
+                            "type": "integer",
+                            "required": true
+                          },
+                          "zipcode": {
+                            "type": "string",
+                            "required": true,
+                            "example": "61700-000"
+                          },
+                          "neighborhood": {
+                            "type": "string",
+                            "required": true,
+                            "example": ""
+                          },
+                          "city": {
+                            "type": "string",
+                            "required": true,
+                            "example": "Aquiraz"
+                          },
+                          "state": {
+                            "type": "strin",
+                            "required": true,
+                            "example": "Ceará"
+                          }
+                        }
+                      }
+                    },
+                    "telephones": {
+                      "type": "array",
+                      "example": [
+
+                      ],
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "example": 1
+                          },
+                          "number": {
+                            "type": "string"
+                          },
+                          "contact_person": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "emails": {
+                      "type": "array",
+                      "example": [
+
+                      ],
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "required": false,
+                            "example": 1
+                          },
+                          "address": {
+                            "type": "string",
+                            "required": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "required": [
+                "personal_datum"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a pacient from the database",
+        "tags": [
+          "Pacients"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
     "/specialties": {
       "post": {
         "summary": "Creates a new Specialty",
@@ -2583,6 +4051,389 @@
                 "specialty_name": {
                   "type": "string",
                   "example": ""
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/surgery": {
+      "post": {
+        "summary": "Creates a new Surgery",
+        "tags": [
+          "Surgery"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "surgery",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "surgery": {
+                  "type": "object",
+                  "properties": {
+                    "scheduled_to": {
+                      "type": "string",
+                      "example": "2019-05-10T18:23:42.000Z"
+                    },
+                    "real_end_time": {
+                      "type": "string",
+                      "example": "2019-05-10T18:23:42.000Z"
+                    },
+                    "finished": {
+                      "type": "boolean"
+                    },
+                    "canceled": {
+                      "type": "boolean"
+                    },
+                    "doctor_id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "pacient_id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "surgery_type_id": {
+                      "type": "integer",
+                      "example": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "summary": "Retrieves a list of all active surgery",
+        "tags": [
+          "Surgery"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "scheduled_to": {
+                    "type": "string",
+                    "example": "2019-05-10T18:23:42.000Z"
+                  },
+                  "real_end_time": {
+                    "type": "string",
+                    "example": "2019-05-10T18:23:42.000Z"
+                  },
+                  "finished": {
+                    "type": "boolean"
+                  },
+                  "canceled": {
+                    "type": "boolean"
+                  },
+                  "doctor_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "pacient_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "surgery_type_id": {
+                    "type": "integer",
+                    "example": 1
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/surgery/{id}": {
+      "get": {
+        "summary": "Retrieves data regarding an surgery record",
+        "tags": [
+          "Surgery"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "scheduled_to": {
+                  "type": "string",
+                  "example": "2019-05-10T18:23:42.000Z"
+                },
+                "real_end_time": {
+                  "type": "string",
+                  "example": "2019-05-10T18:23:42.000Z"
+                },
+                "finished": {
+                  "type": "boolean"
+                },
+                "canceled": {
+                  "type": "boolean"
+                },
+                "doctor_id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "pacient_id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "surgery_type_id": {
+                  "type": "integer",
+                  "example": 1
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update some surgery information",
+        "tags": [
+          "Surgery"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "surgery",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "surgery": {
+                  "type": "object",
+                  "properties": {
+                    "scheduled_to": {
+                      "type": "string",
+                      "example": "2019-05-10T18:23:42.000Z"
+                    },
+                    "real_end_time": {
+                      "type": "string",
+                      "example": "2019-05-10T18:23:42.000Z"
+                    },
+                    "finished": {
+                      "type": "boolean"
+                    },
+                    "canceled": {
+                      "type": "boolean"
+                    },
+                    "doctor_id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "pacient_id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "surgery_type_id": {
+                      "type": "integer",
+                      "example": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "scheduled_to": {
+                  "type": "string",
+                  "example": "2019-05-10T18:23:42.000Z"
+                },
+                "real_end_time": {
+                  "type": "string",
+                  "example": "2019-05-10T18:23:42.000Z"
+                },
+                "finished": {
+                  "type": "boolean"
+                },
+                "canceled": {
+                  "type": "boolean"
+                },
+                "doctor_id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "pacient_id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "surgery_type_id": {
+                  "type": "integer",
+                  "example": 1
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Removes some surgery information",
+        "tags": [
+          "Surgery"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "scheduled_to": {
+                  "type": "string",
+                  "example": "2019-05-10T18:23:42.000Z"
+                },
+                "real_end_time": {
+                  "type": "string",
+                  "example": "2019-05-10T18:23:42.000Z"
+                },
+                "finished": {
+                  "type": "boolean"
+                },
+                "canceled": {
+                  "type": "boolean"
+                },
+                "doctor_id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "pacient_id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "surgery_type_id": {
+                  "type": "integer",
+                  "example": 1
                 }
               }
             }
