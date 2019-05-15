@@ -21,6 +21,7 @@ class AppointmentPdf < GenericPdf
   end
   
   def save
-    @pdf.render_file "public/appointment_#{@appointment.id}.pdf"
+    @appointment.pdf_data = @pdf.render
+    @appointment.save
   end
 end
