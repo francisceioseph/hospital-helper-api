@@ -4,6 +4,7 @@ json.id           exam.id
 json.scheduled_to exam.scheduled_to
 json.finished     exam.finished
 json.canceled     exam.canceled
+json.receipt_url  exam.try(:receipt).try(:url)
 
 json.doctor do
   json.id        exam.doctor_id

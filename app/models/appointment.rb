@@ -8,7 +8,7 @@ class Appointment < ApplicationRecord
   belongs_to :pacient
   belongs_to :prontuario, required: false
 
-  mount_uploader :receipt, AppointmentReceiptUploader
+  mount_uploader :receipt, ReceiptUploader
 
   before_save :generate_pdf, on: [ :create, :update ]
 
