@@ -6,6 +6,7 @@ json.intended_end_time appointment.intended_end_time
 json.real_end_time     appointment.real_end_time
 json.finished          appointment.finished
 json.canceled          appointment.canceled
+json.receipt_url       appointment.try(:receipt).try(:url)
 
 json.doctor do
   json.id        appointment.doctor_id
@@ -18,7 +19,7 @@ json.pacient do
 end
 
 json.appointment_type do
-  json.id       appointment.appointment_type_id
+  json.id                    appointment.appointment_type_id
   json.appointment_type_name appointment.appointment_type.appointment_type_name
 end
 

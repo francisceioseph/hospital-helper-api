@@ -7,6 +7,12 @@ class AppointmentPdf < GenericPdf
     @appointment = appointment
     build
   end
+  
+  def render 
+    @pdf.render
+  end
+
+  private
 
   def build
     data = [
@@ -18,10 +24,5 @@ class AppointmentPdf < GenericPdf
     @pdf.text "Comprovante de Agendamento de Consulta Médica", size: 16, style: :bold, align: :center
     @pdf.move_down 25
     @pdf.table data, position: :center
-  end
-  
-  def save
-    @appointment.pdf_data = @pdf.render
-    @appointment.save
   end
 end
