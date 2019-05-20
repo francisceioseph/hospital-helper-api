@@ -128,11 +128,6 @@ class AddPermissionsSeeder < Germinator::Seed
         resource_name: 'perfis-acesso'
     },
     {
-        id: 17,
-        action_type: :view,
-        resource_name: 'profile'
-    },
-    {
         id: 18,
         action_type: :view,
         resource_name: 'mensagens'
