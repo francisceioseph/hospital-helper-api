@@ -3,10 +3,10 @@
 class SurgeriesController < ApplicationController
   before_action :set_surgery, only: %i[show update destroy]
 
-  # GET /surgeries
-  # GET /surgeries.json
+  # GET /surgeries/doctor/:doctor_id
+  # GET /surgeries/doctor/:doctor_id.json
   def index
-    @surgeries = SurgeryAppointment.all
+    @surgeries = SurgeryAppointment..where(doctor_id: params[:doctor_id])
   end
 
   # GET /surgeries/1

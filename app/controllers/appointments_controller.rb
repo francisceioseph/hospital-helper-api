@@ -4,10 +4,10 @@ class AppointmentsController < ApplicationController
   
   before_action :set_appointment, only: %i[show update destroy]
 
-  # GET /appointments
-  # GET /appointments.json
+  # GET /appointments/doctor/:doctor_id
+  # GET /appointments/doctor/:doctor_id.json
   def index
-    @appointments = Appointment.all
+    @appointments = Appointment.where(doctor_id: params[:doctor_id])
   end
 
   # GET /appointments/1
@@ -55,6 +55,10 @@ class AppointmentsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_appointment
     @appointment = Appointment.find(params[:id])
+  end
+
+  def doctor_id_params
+    params.permit(:doctor_id)
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

@@ -4,10 +4,10 @@ class ExamsController < ApplicationController
   
   before_action :set_exam, only: %i[show update destroy]
 
-  # GET /exams
-  # GET /exams.json
+  # GET /exams/exam-type/:exam_type_id
+  # GET /exams/exam-type/:exam_type_id.json
   def index
-    @exams = ExamAppointment.all
+    @exams = ExamAppointment.where(exam_type_id: params[:exam_type_id])
   end
 
   # GET /exams/1

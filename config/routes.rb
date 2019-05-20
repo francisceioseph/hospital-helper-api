@@ -62,7 +62,7 @@ Rails.application.routes.draw do
   patch '/telephones/:id', to: 'telephones#update'
   delete '/telephones/:id', to: 'telephones#destroy'
 
-  get   '/exams', to: 'exams#index'
+  get   '/exams/exam-type/:exam_type_id', to: 'exams#index'
   post  '/exams', to: 'exams#create'
   get   '/exams/:id', to: 'exams#show'
   patch '/exams/:id', to: 'exams#update'
@@ -73,7 +73,7 @@ Rails.application.routes.draw do
   patch '/exam-types/:id', to: 'exam_types#update'
   delete '/exam-types/:id', to: 'exam_types#destroy'
 
-  get   '/appointments', to: 'appointments#index'
+  get   '/appointments/doctor/:doctor_id', to: 'appointments#index'
   post  '/appointments', to: 'appointments#create'
   get   '/appointments/:id', to: 'appointments#show'
   patch '/appointments/:id', to: 'appointments#update'
@@ -84,7 +84,7 @@ Rails.application.routes.draw do
   patch '/appointment-types/:id', to: 'appointment_types#update'
   delete '/appointment-types/:id', to: 'appointment_types#destroy'
 
-  get   '/surgeries', to: 'surgeries#index'
+  get   '/surgeries/doctor/:doctor_id', to: 'surgeries#index'
   post  '/surgeries', to: 'surgeries#create'
   get   '/surgeries/:id', to: 'surgeries#show'
   patch '/surgeries/:id', to: 'surgeries#update'
