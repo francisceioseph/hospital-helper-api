@@ -44,9 +44,11 @@ class AddRegulatorPersonalDatumSeeder < Germinator::Seed
   #
   def germinate
     PersonalDatum.create!([
-        id: 3,
+        {
+          id: 3,
         profile_id: 3,
         full_name: 'Administor da Regulação'
+      }
     ])
   end
 

@@ -1,4 +1,4 @@
-class AddRolesSeeder < Germinator::Seed
+class AddInitialAppointmentTypesSeeder < Germinator::Seed
 
   #
   # Set the configuration for the seed to use during execution.
@@ -43,41 +43,15 @@ class AddRolesSeeder < Germinator::Seed
   # Code to execute during the germinate process (up).
   #
   def germinate
-    Role.destroy_all
-    Role.create!([
-    {
-        id: 1,
-        role_name: 'Almight',
-        role_permissions_attributes: [
-        { permission_id: 1 }, { permission_id: 2 }, { permission_id: 3 }, { permission_id: 4 }, { permission_id: 5 },
-        { permission_id: 6 }, { permission_id: 7 }, { permission_id: 8 }, { permission_id: 9 }, { permission_id: 9 },
-        { permission_id: 10 }, { permission_id: 11 }, { permission_id: 12 }, { permission_id: 13 }, { permission_id: 14 },
-        { permission_id: 15 }, { permission_id: 16 }, { permission_id: 18 }
-        ]
-    }, 
-    {
-      id: 2,
-      role_name: 'Médico',
-      role_permissions_attributes:[
-        { permission_id: 1 }, { permission_id: 2 }, { permission_id: 3 }, { permission_id: 7 }, { permission_id: 8 }, { permission_id: 9 },
-        { permission_id: 18 }
-      ]
-    }, 
-    {
-      id: 3,
-      role_name: 'Enfermeiro',
-      role_permissions_attributes: [
-        { permission_id: 1 }, { permission_id: 4 }, { permission_id: 5 }, { permission_id: 6 }, { permission_id: 8 }, { permission_id: 9 },
-        { permission_id: 18 }
-      ]
-    },
-    {
-      id: 4,
-      role_name: 'Chat',
-      role_permissions_attributes: [
-        { permission_id: 18 }
-      ]
-    }
+    AppointmentType.create!([
+        {
+            id: 1,
+            appointment_type_name: "Emergência"
+        },
+        {
+            id: 2,
+            appointment_type_name: "Agendamento"
+        }
     ])
   end
 
@@ -85,8 +59,7 @@ class AddRolesSeeder < Germinator::Seed
   ##
   # Code to execute during the shrivel process (down).
   #
-  def shrivel
-    Role.destroy_all
-  end
+  # def shrivel
+  # end
 
 end

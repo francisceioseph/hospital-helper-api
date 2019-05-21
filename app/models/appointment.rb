@@ -10,6 +10,8 @@ class Appointment < ApplicationRecord
 
   mount_uploader :receipt, ReceiptUploader
 
+  validates :scheduled_to, uniqueness: { scope: :doctor_id, message: "Este horário já se encontra agendado" }
+
   before_save :generate_pdf, on: [ :create, :update ]
 
   def generate_pdf

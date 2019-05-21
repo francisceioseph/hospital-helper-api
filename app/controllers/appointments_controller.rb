@@ -72,6 +72,7 @@ class AppointmentsController < ApplicationController
       :doctor_id,
       :pacient_id,
       :prontuario_id,
+      :diagnostic_hypotesis,
       :appointment_type_id
     )
   end

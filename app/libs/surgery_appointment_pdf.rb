@@ -22,7 +22,11 @@ class SurgeryAppointmentPdf < GenericPdf
       ['Data do Agendamento', @surgery_appointment.scheduled_to.strftime("%d/%m/%Y às %H:%M")]
     ]
 
-    @pdf.text "Comprovante de Agendamento de Cirurgia", size: 16, style: :bold, align: :center
+    @pdf.text "PREFEITURA MUNICIPAL DE AQUIRAZ", size: 12, style: :bold, align: :right
+    @pdf.text "SECRETARIA MUNICIPAL DE SAÚDE", size: 12, style: :normal, align: :right
+    @pdf.move_down 25
+
+    @pdf.text "Comprovante de Agendamento de Cirurgia", size: 14, style: :bold, align: :center
     @pdf.move_down 25
     @pdf.table data, position: :center
   end

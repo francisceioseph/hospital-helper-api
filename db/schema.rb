@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_15_171010) do
+ActiveRecord::Schema.define(version: 2019_05_21_165026) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "street_name"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2019_05_15_171010) do
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
     t.string "receipt"
+    t.text "diagnostic_hypotesis"
     t.index ["appointment_type_id"], name: "index_appointments_on_appointment_type_id"
     t.index ["deleted_at"], name: "index_appointments_on_deleted_at"
     t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
@@ -375,7 +376,7 @@ ActiveRecord::Schema.define(version: 2019_05_15_171010) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
-  create_table "versions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "versions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.string "item_type", limit: 191, null: false
     t.bigint "item_id", null: false
     t.string "event", null: false

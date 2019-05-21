@@ -18,10 +18,15 @@ class AppointmentPdf < GenericPdf
     data = [
       ["Paciente", @appointment.pacient.personal_datum.full_name],
       ["Médico", @appointment.doctor.personal_datum.full_name],
-      ['Data do Agendamento', @appointment.scheduled_to.strftime("%d/%m/%Y às %H:%M")]
+      ['Data do Agendamento', @appointment.scheduled_to.in_time_zone('Buenos Aires').strftime("%d/%m/%Y às %H:%M")],
+      ['Hipótese Diagnóstica', @appointment.diagnostic_hypotesis]
     ]
 
-    @pdf.text "Comprovante de Agendamento de Consulta Médica", size: 16, style: :bold, align: :center
+    @pdf.text "PREFEITURA MUNICIPAL DE AQUIRAZ", size: 12, style: :bold, align: :right
+    @pdf.text "SECRETARIA MUNICIPAL DE SAÚDE", size: 12, style: :normal, align: :right
+    @pdf.move_down 25
+
+    @pdf.text "<u>Comprovante de Agendamento de Consulta Médica</u>", size: 14, style: :bold, align: :center, inline_format: true
     @pdf.move_down 25
     @pdf.table data, position: :center
   end
