@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+json.id            surgery.id
 json.scheduled_to  surgery.scheduled_to
 json.real_end_time surgery.real_end_time
 json.finished      surgery.finished

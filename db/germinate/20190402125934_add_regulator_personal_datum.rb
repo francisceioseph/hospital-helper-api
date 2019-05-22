@@ -47,7 +47,7 @@ class AddRegulatorPersonalDatumSeeder < Germinator::Seed
         {
           id: 3,
         profile_id: 3,
-        full_name: 'Administor da Regulação'
+        full_name: 'Administrador da Regulação'
       }
     ])
   end

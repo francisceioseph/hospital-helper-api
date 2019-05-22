@@ -19,7 +19,7 @@ class ExamAppointmentPdf < GenericPdf
       ["Paciente", @exam_appointment.pacient.personal_datum.full_name],
       ["Médico Requisitante", @exam_appointment.doctor.personal_datum.full_name],
       ["Tipo de Exame", @exam_appointment.exam_type.exam_type_name],
-      ['Data do Agendamento', @exam_appointment.scheduled_to.strftime("%d/%m/%Y às %H:%M")]
+      ['Data do Agendamento', @exam_appointment.scheduled_to.in_time_zone('Buenos Aires').strftime("%d/%m/%Y às %H:%M")]
     ]
 
     @pdf.text "PREFEITURA MUNICIPAL DE AQUIRAZ", size: 12, style: :bold, align: :right

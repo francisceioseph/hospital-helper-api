@@ -19,7 +19,7 @@ class SurgeryAppointmentPdf < GenericPdf
       ["Paciente", @surgery_appointment.pacient.personal_datum.full_name],
       ["Cirurgião", @surgery_appointment.doctor.personal_datum.full_name],
       ["Tipo de Cirurgia", @surgery_appointment.surgery_type.surgery_type_name],
-      ['Data do Agendamento', @surgery_appointment.scheduled_to.strftime("%d/%m/%Y às %H:%M")]
+      ['Data do Agendamento', @surgery_appointment.scheduled_to.in_time_zone('Buenos Aires').strftime("%d/%m/%Y às %H:%M")]
     ]
 
     @pdf.text "PREFEITURA MUNICIPAL DE AQUIRAZ", size: 12, style: :bold, align: :right

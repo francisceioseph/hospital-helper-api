@@ -6,7 +6,7 @@ class SurgeriesController < ApplicationController
   # GET /surgeries/doctor/:doctor_id
   # GET /surgeries/doctor/:doctor_id.json
   def index
-    @surgeries = SurgeryAppointment..where(doctor_id: params[:doctor_id])
+    @surgeries = SurgeryAppointment.where(doctor_id: params[:doctor_id])
   end
 
   # GET /surgeries/1
