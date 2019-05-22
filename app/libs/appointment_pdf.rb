@@ -24,9 +24,10 @@ class AppointmentPdf < GenericPdf
 
     @pdf.text "PREFEITURA MUNICIPAL DE AQUIRAZ", size: 12, style: :bold, align: :right
     @pdf.text "SECRETARIA MUNICIPAL DE SAÚDE", size: 12, style: :normal, align: :right
-    @pdf.move_down 25
+    @pdf.text "HOSPITAL GERAL MANOEL ASSUNÇÃO PIRES", size: 12, style: :normal, align: :right
+    @pdf.move_down 40
 
-    @pdf.text "<u>Comprovante de Agendamento de Consulta Médica</u>", size: 14, style: :bold, align: :center, inline_format: true
+    @pdf.text "COMPROVANTE DE AGENDAMENTO DE CONSULTA MÉDICA", size: 14, style: :bold, align: :center, inline_format: true
     @pdf.move_down 25
     @pdf.table data, position: :center
   end

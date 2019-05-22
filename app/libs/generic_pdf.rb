@@ -4,7 +4,10 @@ class GenericPdf
   PDF_OPTIONS = {
     page_size:   "A5",
     page_layout: :portrait,
-    margin:      [20, 20]
+    left_margin: 20,
+    right_margin: 20,
+    top_margin: 40,
+    bottom_margin: 20
   }
 
   def initialize

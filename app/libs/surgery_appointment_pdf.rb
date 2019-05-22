@@ -24,9 +24,10 @@ class SurgeryAppointmentPdf < GenericPdf
 
     @pdf.text "PREFEITURA MUNICIPAL DE AQUIRAZ", size: 12, style: :bold, align: :right
     @pdf.text "SECRETARIA MUNICIPAL DE SAÚDE", size: 12, style: :normal, align: :right
-    @pdf.move_down 25
+    @pdf.text "HOSPITAL GERAL MANOEL ASSUNÇÃO PIRES", size: 12, style: :normal, align: :right
+    @pdf.move_down 40
 
-    @pdf.text "Comprovante de Agendamento de Cirurgia", size: 14, style: :bold, align: :center
+    @pdf.text "COMPROVANTE DE AGENDAMENTO DE CIRURGIA", size: 14, style: :bold, align: :center
     @pdf.move_down 25
     @pdf.table data, position: :center
   end
