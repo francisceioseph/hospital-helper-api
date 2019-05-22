@@ -9,6 +9,7 @@ end
 
 if pacient.next_of_kin.present?
   json.next_of_kin do
+    json.id        pacient.next_of_kin.id
     json.full_name pacient.next_of_kin.full_name
     json.cpf       pacient.next_of_kin.cpf
   end
