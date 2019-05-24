@@ -1,4 +1,4 @@
-FROM ruby:2.5.4-stretch
+FROM ruby:2.5.5-stretch
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update -qq
