@@ -11,7 +11,7 @@ class User < ApplicationRecord
          :jwt_authenticatable,
          jwt_revocation_strategy: JwtBlacklist
 
-  has_one :profile
+  has_one :profile, dependent: :destroy
 
   belongs_to :role, required: false
   has_and_belongs_to_many :conversations, dependent: :destroy

@@ -46,9 +46,39 @@ class AddRegulatorUserSeeder < Germinator::Seed
     User.create!([{
       id: 3,
       role_id: 5,
-      email: 'admin@regulacao.com',
+      email: 'admin.regulacao@hgmap.com',
       password: 'admin123',
-      password_confirmation: 'admin123'
+      password_confirmation: 'admin123', 
+      profile_attributes: {
+        profile_type: 'Regulator',
+        personal_datum_attributes: {
+          full_name: 'Administrador Regulação'
+        }
+      }
+    }, {
+      id: 4,
+      role_id: 5,
+      email: 'regulador@hgmap.com',
+      password: '123456',
+      password_confirmation: '123456', 
+      profile_attributes: {
+        profile_type: 'Regulator',
+        personal_datum_attributes: {
+          full_name: 'Regulador 01'
+        }
+      }
+    }, {
+      id: 5,
+      role_id: 5,
+      email: 'regulador2@hgmap.com',
+      password: '123456',
+      password_confirmation: '123456', 
+      profile_attributes: {
+        profile_type: 'Regulator',
+        personal_datum_attributes: {
+          full_name: 'Regulador 02'
+        }
+      }
     }])
   end
 
@@ -56,7 +86,8 @@ class AddRegulatorUserSeeder < Germinator::Seed
   ##
   # Code to execute during the shrivel process (down).
   #
-  # def shrivel
-  # end
+  def shrivel
+    User.delete([3, 4 , 5])
+  end
 
 end

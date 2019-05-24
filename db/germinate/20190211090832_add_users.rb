@@ -46,13 +46,19 @@ class AddUsersSeeder < Germinator::Seed
     User.destroy_all
 
     User.create!([
-    {
-        id: 1,
-        role_id: 1,
-        email: 'admin@admin.com',
-        password: 'admin@123',
-        password_confirmation: 'admin@123'
-    }
+      {
+          id: 1,
+          role_id: 1,
+          email: 'admin@hgmap.com',
+          password: 'admin@123',
+          password_confirmation: 'admin@123',
+          profile_attributes: {
+            profile_type: 'Almight',
+            personal_datum_attributes: {
+              full_name: 'Administrador'
+            }
+        }
+      }
     ])
   end
 
