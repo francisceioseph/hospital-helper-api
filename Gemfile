@@ -11,7 +11,7 @@ gem 'rails', '~> 5.2.2'
 gem 'mysql2'
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.12'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
