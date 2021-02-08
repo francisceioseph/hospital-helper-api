@@ -42,7 +42,7 @@ gem "germinator", github: "WowzaMediaSystems/germinator"
 gem 'rswag'
 gem "paper_trail"
 gem "request_store"
-gem 'carrierwave', '~> 1.3.1'
+gem 'carrierwave', '~> 1.3.2'
 gem 'prawn-rails'
 gem 'pdf-core', '~> 0.7.0'
 
